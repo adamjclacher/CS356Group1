@@ -1,0 +1,80 @@
+.outerInputField{
+  box-shadow: inset -3px -3px 7px #ffffffb0,
+  inset 3px 3px 5px rgba(94, 104, 121, 0.692);
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  display: inline-block;
+
+}
+
+textarea, input, select{
+  resize: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: grey;
+  font-size: 20px;
+}
+
+.innerInfoField{
+  width: 100%;
+  font-size: 15px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  background-color: white;
+  -webkit-appearance: none;
+  background-color: #dde1e7;
+}
+
+.submitButton{
+  border: none;
+  padding: 15px 50px 15px 50px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.submitButton:hover{
+  cursor: pointer;
+}
+
+.formLabel{
+  margin-bottom: 10px;
+}
+
+.formFiftyWidthSection{
+  display: inline-block;
+  width: 45%;
+}
+
+.horizontalFormSpacer{
+  display: inline-block;
+  height:1px;
+  width: 5%;
+}
+
+.tableSearchContainer{
+  display: flex;
+}
+
+.searchFlex{
+  padding: 5px;
+  flex: 2;
+}
+
+.smallSearchFlex{
+  padding: 5px;
+  flex: 1;
+}
+
+.currencyField{
+  width: calc(100% - 50px);
+}
+
+.currencyLabel{
+  display: inline-block;
+  font-size: 15px;
+}
