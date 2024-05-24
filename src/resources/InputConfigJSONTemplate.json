@@ -1,0 +1,957 @@
+{
+	"Metadata": {
+		"last_update": "update_num",
+		"version": "version_num"
+	},
+	"Encoder": [
+		{
+			"encoder_types": [
+				{
+					"name": "Standard Encoder",
+					"id": 0,
+					"code": "000",
+					"active": true,
+					"active_codecs": [ 0, 2, 4 ]
+				},
+				{
+					"name": "Scalable Encoder",
+					"id": 1,
+					"code": "001",
+					"active": true,
+					"active_codecs": []
+				},
+				{
+					"name": "3D/Multiview Encoder",
+					"id": 2,
+					"code": "002",
+					"active": false,
+					"active_codecs": []
+				}
+			]
+		},
+		{
+			"codecs": [
+				{
+					"name": "AVC (H.264)",
+					"id": 0,
+					"code": "000",
+					"max_layers": 1,
+					"active_encoder_modes": [ 0, 1, 2 ],
+					"active_scalability": null
+				},
+				{
+					"name": "SVC 19 (H.264)",
+					"id": 1,
+					"code": "001",
+					"max_layers": 10,
+					"active_encoder_modes": [ 0 ],
+					"active_scalability": [ 0, 1 ]
+				},
+				{
+					"name": "HEVC (H.265)",
+					"id": 2,
+					"code": "002",
+					"max_layers": 1,
+					"active_encoder_modes": [ 1, 2, 3 ],
+					"active_scalability": null
+				},
+				{
+					"name": "SHVC (H.265)",
+					"id": 3,
+					"code": "003",
+					"max_layers": 2,
+					"active_encoder_modes": [ 1, 2, 3 ],
+					"active_scalability": [ 0, 1, 2 ]
+				},
+				{
+					"name": "JEM v6 (Experimental)",
+					"id": 4,
+					"code": "004",
+					"max_layers": 1,
+					"active_encoder_modes": [ 1, 2, 3 ],
+					"active_scalability": null
+				}
+			]
+		},
+		{
+			"encoder_modes": [
+				{
+					"name": "Random Access",
+					"id": 0,
+					"code": "000"
+				},
+				{
+					"name": "Low Delay",
+					"id": 1,
+					"code": "001"
+				},
+				{
+					"name": "Intra Only",
+					"id": 2,
+					"code": "002"
+				}
+			]
+		},
+		{
+			"raw_files": [
+				{
+					"id": 0,
+					"name": "Video 1",
+					"code": "000",
+					"times": [ "000" ],
+					"spatials": [ "000", "001" ],
+					"temporals": [ "001", "002" ],
+					"depths": [ "000" ],
+					"metadata": {
+						"description": "description 1",
+						"url_image": "1.jpg"
+					}
+				}
+			]
+		},
+		{
+			"pre_encoded_files": [
+				{
+					"id": 0,
+					"code": "001003000012005007000000000",
+					"duration": "00:00:05:10"
+				},
+				{
+					"id": 1,
+					"code": "001003000012005007000000001",
+					"duration": "00:00:05:10"
+				},
+				{
+					"id": 2,
+					"code": "001003000012005007000000002",
+					"duration": "00:00:05:10"
+				},
+				{
+					"id": 3,
+					"code": "001003000012005007000000000_001003000014005007000000000",
+					"duration": "00:00:05:10"
+				}
+			]
+		},
+		{
+			"time": [
+				{
+					"id": 0,
+					"name": "5 seconds",
+					"code": "000",
+					"duration": "00:00:05:00"
+				},
+				{
+					"id": 1,
+					"name": "10 seconds",
+					"code": "001",
+					"duration": "00:00:10:00"
+				},
+				{
+					"id": 2,
+					"name": "20 seconds",
+					"code": "002",
+					"duration": "00:00:20:00"
+				},
+				{
+					"id": 3,
+					"name": "30 seconds",
+					"code": "003",
+					"duration": "00:00:30:00"
+				},
+				{
+					"id": 4,
+					"name": "60 seconds",
+					"code": "004",
+					"duration": "00:01:00:00"
+				},
+				{
+					"id": 5,
+					"name": "2 minutes",
+					"code": "005",
+					"duration": "00:02:00:00"
+				},
+				{
+					"id": 6,
+					"name": "5 minutes",
+					"code": "006",
+					"duration": "00:05:00:00"
+				}
+			]
+		},
+		{
+			"scalability": [
+				{
+					"name": "spatial(resolutions)",
+					"id": 1,
+					"code": "001",
+					"types": [
+						{
+							"id": 100,
+							"name": "QCIF",
+							"order": 1,
+							"code": "000",
+							"value": "176X144"
+						},
+						{
+							"id": 101,
+							"name": "QVGA",
+							"order": 2,
+							"code": "001",
+							"value": "320X240"
+						},
+						{
+							"id": 102,
+							"name": "CIF",
+							"order": 3,
+							"code": "002",
+							"value": "352X288"
+						},
+						{
+							"id": 103,
+							"name": "SIF",
+							"order": 4,
+							"code": "003",
+							"value": "352X240"
+						},
+						{
+							"id": 104,
+							"name": "qWVGA",
+							"order": 5,
+							"code": "004",
+							"value": "416X240"
+						},
+						{
+							"id": 105,
+							"name": "VGA",
+							"order": 6,
+							"code": "005",
+							"value": "640X480"
+						},
+						{
+							"id": 106,
+							"name": "SD480",
+							"order": 7,
+							"code": "006",
+							"value": "720X480"
+						},
+						{
+							"id": 107,
+							"name": "PAL",
+							"order": 8,
+							"code": "007",
+							"value": "768X576"
+						},
+						{
+							"id": 108,
+							"name": "SD576",
+							"order": 9,
+							"code": "008",
+							"value": "720X756"
+						},
+						{
+							"id": 109,
+							"name": "WVGA",
+							"order": 10,
+							"code": "009",
+							"value": "832X480"
+						},
+						{
+							"id": 110,
+							"name": "XGA",
+							"order": 11,
+							"code": "010",
+							"value": "1024X768"
+						},
+						{
+							"id": 111,
+							"name": "HD720",
+							"order": 12,
+							"code": "011",
+							"value": "1280X720"
+						},
+						{
+							"id": 112,
+							"name": "HD1080",
+							"order": 13,
+							"code": "012",
+							"value": "1920X1080"
+						},
+						{
+							"id": 113,
+							"name": "WQXGA",
+							"order": 14,
+							"code": "013",
+							"value": "2560X1600"
+						},
+						{
+							"id": 114,
+							"name": "ULTRA HD",
+							"order": 15,
+							"code": "014",
+							"value": "3840X2160"
+						}
+					]
+				},
+				{
+					"name": "temporals(frame rate)",
+					"id": 2,
+					"code": "002",
+					"types": [
+						{
+							"id": 200,
+							"name": "7fps",
+							"order": 1,
+							"code": "000",
+							"value": "7"
+						},
+						{
+							"id": 201,
+							"name": "15fps",
+							"order": 2,
+							"code": "001",
+							"value": "15"
+						},
+						{
+							"id": 202,
+							"name": "20fps",
+							"order": 3,
+							"code": "002",
+							"value": "20"
+						},
+						{
+							"id": 203,
+							"name": "24fps",
+							"order": 4,
+							"code": "003",
+							"value": "24"
+						},
+						{
+							"id": 204,
+							"name": "25fps",
+							"order": 5,
+							"code": "004",
+							"value": "25"
+						},
+						{
+							"id": 205,
+							"name": "30fps",
+							"order": 6,
+							"code": "005",
+							"value": "30"
+						},
+						{
+							"id": 206,
+							"name": "60fps",
+							"order": 7,
+							"code": "006",
+							"value": "60"
+						},
+						{
+							"id": 207,
+							"name": "120fps",
+							"order": 8,
+							"code": "007",
+							"value": "120"
+						},
+						{
+							"id": 208,
+							"name": "240fps",
+							"order": 9,
+							"code": "008",
+							"value": "240"
+						}
+					]
+				},
+				{
+					"name": "quality",
+					"id": 3,
+					"code": "003",
+					"types": [
+						{
+							"id": 300,
+							"name": "Q20",
+							"order": 1,
+							"code": "000",
+							"value": "20"
+						},
+						{
+							"id": 301,
+							"name": "Q21",
+							"order": 2,
+							"code": "001",
+							"value": "21"
+						},
+						{
+							"id": 302,
+							"name": "Q22",
+							"order": 3,
+							"code": "002",
+							"value": "22"
+						},
+						{
+							"id": 303,
+							"name": "Q23",
+							"order": 4,
+							"code": "003",
+							"value": "23"
+						},
+						{
+							"id": 304,
+							"name": "Q24",
+							"order": 5,
+							"code": "004",
+							"value": "24"
+						},
+						{
+							"id": 305,
+							"name": "Q25",
+							"order": 6,
+							"code": "005",
+							"value": "25"
+						},
+						{
+							"id": 306,
+							"name": "Q26",
+							"order": 7,
+							"code": "006",
+							"value": "26"
+						},
+						{
+							"id": 307,
+							"name": "Q27",
+							"order": 8,
+							"code": "007",
+							"value": "27"
+						},
+						{
+							"id": 308,
+							"name": "Q28",
+							"order": 9,
+							"code": "008",
+							"value": "28"
+						},
+						{
+							"id": 309,
+							"name": "Q29",
+							"order": 10,
+							"code": "009",
+							"value": "29"
+						},
+						{
+							"id": 310,
+							"name": "Q30",
+							"order": 11,
+							"code": "010",
+							"value": "30"
+						},
+						{
+							"id": 311,
+							"name": "Q31",
+							"order": 12,
+							"code": "011",
+							"value": "31"
+						},
+						{
+							"id": 312,
+							"name": "Q32",
+							"order": 13,
+							"code": "012",
+							"value": "32"
+						},
+						{
+							"id": 313,
+							"name": "Q33",
+							"order": 14,
+							"code": "013",
+							"value": "33"
+						},
+						{
+							"id": 314,
+							"name": "Q34",
+							"order": 15,
+							"code": "014",
+							"value": "34"
+						},
+						{
+							"id": 315,
+							"name": "Q35",
+							"order": 16,
+							"code": "015",
+							"value": "35"
+						},
+						{
+							"id": 316,
+							"name": "Q36",
+							"order": 17,
+							"code": "016",
+							"value": "36"
+						},
+						{
+							"id": 317,
+							"name": "Q37",
+							"order": 18,
+							"code": "017",
+							"value": "37"
+						},
+						{
+							"id": 318,
+							"name": "Q38",
+							"order": 19,
+							"code": "018",
+							"value": "38"
+						},
+						{
+							"id": 319,
+							"name": "Q39",
+							"order": 20,
+							"code": "019",
+							"value": "39"
+						},
+						{
+							"id": 320,
+							"name": "Q40",
+							"order": 21,
+							"code": "020",
+							"value": "40"
+						}
+					]
+				},
+				{
+					"name": "depth",
+					"id": 4,
+					"code": "004",
+					"types": [
+						{
+							"id": 400,
+							"name": "8 bit",
+							"order": 1,
+							"code": "000",
+							"value": "8"
+						},
+						{
+							"id": 401,
+							"name": "10 bit",
+							"order": 2,
+							"code": "001",
+							"value": "10"
+						},
+						{
+							"id": 402,
+							"name": "12 bit",
+							"order": 3,
+							"code": "002",
+							"value": "12"
+						},
+						{
+							"id": 403,
+							"name": "14 bit",
+							"order": 4,
+							"code": "003",
+							"value": "14"
+						},
+						{
+							"id": 404,
+							"name": "16 bit",
+							"order": 5,
+							"code": "004",
+							"value": "16"
+						}
+					]
+				}
+			]
+		}
+	],
+	"Network": [
+		{
+			"topology": [
+				{
+					"name": "Basic IP",
+					"types": [
+						{
+							"name": "Basic Client-Server",
+							"id": 0,
+							"code": "000",
+							"image_url": "tbd",
+							"active": true
+						},
+						{
+							"name": "Client-Server with Middlebox",
+							"id": 2,
+							"code": "002",
+							"image_url": "tbd",
+							"active": true
+						}
+					]
+				},
+				{
+					"name": "5G",
+					"types": [
+						{
+							"name": "5G Topology A",
+							"id": 1,
+							"code": "001",
+							"image_url": "tbd",
+							"active": false
+						},
+						{
+							"name": "5G Topology B",
+							"id": 2,
+							"code": "002",
+							"image_url": "tbd",
+							"active": false
+						}
+					]
+				},
+				{
+					"name": "5G and RAN",
+					"types": [
+						{
+							"name": "5G & RAN A",
+							"id": 1,
+							"code": "001",
+							"image_url": "tbd",
+							"active": false
+						},
+						{
+							"name": "5G & RAN B",
+							"id": 2,
+							"code": "002",
+							"image_url": "tbd",
+							"active": false
+						}
+					]
+				}
+			]
+		},
+		{
+			"impairments": [
+				{
+					"name": "Packet Loss(% Reduction)",
+					"id": 0,
+					"code": "000",
+					"active": true,
+					"active_impairment_values": [ 0, 1, 2, 3, 4 ]
+				},
+				{
+					"name": "Throttle Bandwidth (% of maximum)",
+					"id": 1,
+					"code": "001",
+					"active": true,
+					"active_impairment_values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+				},
+				{
+					"name": "Throttle Bandwidth (% of average)",
+					"id": 2,
+					"code": "002",
+					"active": true,
+					"active_impairment_values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+				},
+				{
+					"name": "Jitter",
+					"id": 3,
+					"code": "003",
+					"active": true,
+					"active_impairment_values": [ 0, 1, 2, 3, 4 ]
+				},
+				{
+					"name": "End to End Delay(Milliseconds)",
+					"id": 4,
+					"code": "004",
+					"active": true,
+					"active_impairment_values": [ 9, 10, 11, 12, 13 ]
+				}
+			]
+		},
+		{
+			"impairment values": [
+				{
+					"name": "No Reduction",
+					"id": 0,
+					"code": 680,
+					"active": true,
+					"value": 0
+				},
+				{
+					"name": "1% Reduction",
+					"id": 1,
+					"code": 681,
+					"active": true,
+					"value": -1
+				},
+				{
+					"name": "3% Reduction",
+					"id": 2,
+					"code": 682,
+					"active": true,
+					"value": -3
+				},
+				{
+					"name": "5% Reduction",
+					"id": 3,
+					"code": 683,
+					"active": true,
+					"value": -5
+				},
+				{
+					"name": "10% Reduction",
+					"id": 4,
+					"code": 684,
+					"active": true,
+					"value": -10
+				},
+				{
+					"name": "1% Over Provision",
+					"id": 5,
+					"code": 690,
+					"active": true,
+					"value": 1
+				},
+				{
+					"name": "3% Over Provision",
+					"id": 6,
+					"code": 691,
+					"active": true,
+					"value": 3
+				},
+				{
+					"name": "5% Over Provision",
+					"id": 7,
+					"code": 692,
+					"active": true,
+					"value": 5
+				},
+				{
+					"name": "10% Over Provision",
+					"id": 8,
+					"code": 693,
+					"active": true,
+					"value": 10
+				},
+				{
+					"name": "50ms Delay",
+					"id": 9,
+					"code": 700,
+					"active": true,
+					"value": 50
+				},
+				{
+					"name": "100ms Delay",
+					"id": 10,
+					"code": 701,
+					"active": true,
+					"value": 100
+				},
+				{
+					"name": "150ms Delay",
+					"id": 11,
+					"code": 702,
+					"active": true,
+					"value": 150
+				},
+				{
+					"name": "300ms Delay",
+					"id": 12,
+					"code": 703,
+					"active": true,
+					"value": 300
+				},
+				{
+					"name": "500ms Delay",
+					"id": 13,
+					"code": 704,
+					"active": true,
+					"value": 500
+				}
+			]
+		},
+		{
+			"impairment_rules": [
+				{
+					"name": "maximum_num_impairment_variants",
+					"value": 4
+				}
+			]
+		}
+	],
+	"Metrics": [
+		{
+			"encoding_options": {
+				"active": true,
+				"available_metrics": [ 0, 2, 3, 4 ]
+			}
+		},
+		{
+			"streaming_options": {
+				"active": true,
+				"available_metrics": [ 0, 1, 2, 3, 4, 5, 6 ]
+			}
+		},
+		{
+			"name": "Analysis Rules",
+			"types": [
+				{
+					"name": "Summary Analysis Only",
+					"id": 0,
+					"code": "000",
+					"active": true
+				},
+				{
+					"name": "Detailed Analysis",
+					"id": 1,
+					"code": "001",
+					"active": true
+				}
+			]
+		},
+		{
+			"name": "Comp 1 Options",
+			"types": [
+				{
+					"name": "Between Sequences",
+					"id": 0,
+					"code": "000",
+					"active": true
+				},
+				{
+					"name": "Between Variants",
+					"id": 1,
+					"code": "001",
+					"active": true
+				},
+				{
+					"name": "All",
+					"id": 2,
+					"code": "002",
+					"active": true
+				}
+			]
+		},
+		{
+			"name": "Comp 2 Options",
+			"types": [
+				{
+					"name": "Original v Client Playback",
+					"id": 0,
+					"code": "000",
+					"active": true
+				},
+				{
+					"name": "Reconstructed v Client Playback",
+					"id": 1,
+					"code": "001",
+					"active": true
+				},
+				{
+					"name": "All",
+					"id": 2,
+					"code": "002",
+					"active": true
+				}
+			]
+		},
+		{
+			"name": "available_metrics",
+			"types": [
+				{
+					"name": "Bitrate(Encoded)",
+					"id": 0,
+					"code": "000",
+					"active": true
+				},
+				{
+					"name": "Bitrate(MP4)",
+					"id": 1,
+					"code": "001",
+					"active": true
+				},
+				{
+					"name": "PSNR",
+					"id": 2,
+					"code": "002",
+					"active": true
+				},
+				{
+					"name": "SSIM",
+					"id": 3,
+					"code": "003",
+					"active": true
+				},
+				{
+					"name": "DMOS",
+					"id": 4,
+					"code": "004",
+					"active": true
+				},
+				{
+					"name": "VQM",
+					"id": 5,
+					"code": "005",
+					"active": true
+				},
+				{
+					"name": "Subjective MOS",
+					"id": 6,
+					"code": "006",
+					"active": true
+				}
+			]
+		}
+	],
+	"Output": {
+		"encoding_output_options": {
+			"active": true,
+			"active_output_options": [ 0, 1, 2, 6 ]
+		},
+		"active_output_options": [
+			{
+				"name": "Encoded binaries",
+				"id": 0,
+				"code": "000",
+				"active": true
+			},
+			{
+				"name": "Log Files(Encoder)",
+				"id": 1,
+				"code": "001",
+				"active": true
+			},
+			{
+				"name": "Statistics",
+				"id": 2,
+				"code": "002",
+				"active": true
+			},
+			{
+				"name": "Log Files(Network)",
+				"id": 3,
+				"code": "003",
+				"active": true
+			},
+			{
+				"name": "Reference MP4 Files",
+				"id": 4,
+				"code": "004",
+				"active": true
+			},
+			{
+				"name": "Playback MP4 Files",
+				"id": 5,
+				"code": "005",
+				"active": true
+			},
+			{
+				"name": "Encoder Configuration File",
+				"id": 6,
+				"code": "006",
+				"active": true
+			},
+			{
+				"name": "Subjective Testing Dataset",
+				"id": 7,
+				"code": "007",
+				"active": true
+			}
+		]
+	}
+}
