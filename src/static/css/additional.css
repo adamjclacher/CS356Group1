@@ -1,0 +1,46 @@
+.boldText {
+    font-weight: bold;
+}
+
+.centreContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.disabledButton {
+    background-color: #c9ccd2;
+}
+
+.disabledButton:hover {
+    cursor: not-allowed;
+}
+
+.formInput {
+    border: none;
+    outline: none;
+    width: 100%;
+    color: grey;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.outerInputField {
+    box-shadow: inset -3px -3px 7px #ffffffb0,
+    inset 3px 3px 5px rgba(94, 104, 121, 0.692);
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.innerInfoField {
+    width: 100%;
+    font-size: 15px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    -webkit-appearance: none;
+    background-color: #dde1e7;
+}

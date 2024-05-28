@@ -1,75 +1,73 @@
 <!doctype html>
-  <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>CS356 Project - Flask Setup</title>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>CS356 Project - Home</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stylesheet.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/forms.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stylesheet.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/additional.css') }}">
 
-    <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
-    <script src="https://kit.fontawesome.com/e0a50a6f3e.js" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
+        <script src="{{ url_for('static',filename='js/index.js') }}" defer></script>
+        <script src="https://kit.fontawesome.com/e0a50a6f3e.js" crossorigin="anonymous"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div class="content">
-      <br>
-      <div class="section raised">
-        <h1 class="colour">CS356 Flask Setup</h1>
-        <br>
-        <p>Welcome to the UI Design Kit for our video evaluation platform. This page serves as a comprehensive resource for developers and designers, showcasing the interactive elements styled in neomorphism to enhance user engagement through tactile-like digital experiences. <br><br>We've chosen this design style to echo the experimental nature of our application, making on-screen elements feel like physical toggles and buttons, thus providing an intuitive and immersive interface for conducting video encoder evaluations. Here, you’ll find examples and code snippets for implementing this unique and modern aesthetic in our project.</p>
-        <br><br><br>
-
-        <!-- SECTIONS !-->
-
-        <h1 class="colour">Sections</h1>
-        <br>
-        <div class="section raised">
-          <p>This is a <b>raised</b> section</p>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="content">
+            <div class="section centreContent">
+                <a href="" class="button backgroundColour raised roundedCorners boldText">SETUP</a>
+                <a href="" class="button colour raised roundedCorners boldText">ENCODING</a>
+                <a href="" class="button colour raised roundedCorners boldText">VIDEO</a>
+                <a href="" class="button colour raised roundedCorners boldText disabledButton">NETWORK</a>
+                <a href="" class="button colour raised roundedCorners boldText disabledButton">ANALYSIS</a>
+                <a href="" class="button colour raised roundedCorners boldText disabledButton">OUTPUT</a>
+            </div>
+            <br>
+            <!-- This section requires:
+                - 3 buttons (create/edit/delete)
+                - Project name text box
+                - 3 radio buttons (encode only/live stream/stream & record) -->
+            <div class="section raised centreContent">
+                <div>
+                    <table>
+                        <!-- CREATE / EDIT / DELETE BUTTONS -->
+                        <tr><td><a href="" class="button backgroundColour lowered roundedCorners boldText centreContent">CREATE NEW PROJECT</a></td></tr>
+                        <tr><td><a href="" class="button colour raised roundedCorners boldText centreContent disabledButton">EDIT PROJECT</a></td></tr>
+                        <tr><td><a href="" class="button colour raised roundedCorners boldText centreContent disabledButton">DELETE PROJECT</a></td></tr>
+                        <tr><td><br></td></tr>
+                        <tr><td>
+                            <div class="outerInputField">
+                                <input class="innerInfoField" placeholder="PROJECT NAME" name="projectName" id="projectName" required>
+                            </div>
+                        </td></tr>
+                        <tr><td><br></td></tr>
+                        <tr><td><input type="radio" id="encodeOnly" name="radioOption" value="encodeOnly" checked><label for="encodeOnly">ENCODE ONLY</label><br></td></tr>
+                        <tr><td><input type="radio" id="liveStream" name="radioOption" value="liveStream"><label for="liveStream">LIVE STREAM</label><br></td></tr>
+                        <tr><td><input type="radio" id="streamRecord" name="radioOption" value="streamRecord"><label for="streamRecord">STREAM AND RECORD</label><br></td></tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <!-- NEXT PAGE BUTTON -->
+            <div class="section">
+                <div class="splitWidthContainer">
+                    <div class="left"></div>
+                    <div class="right">
+                        <div class="splitWidthContainer">
+                            <div class="left"></div>
+                            <div class="right">
+                                <a href="" class="button colour raised roundedCorners boldText centreContent"
+                                   onclick="displayPageOptions()">NEXT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <br>
-        <div class="section">
-          <p>This is a level section</p>
-        </div>
-        <br>
-        <div class="section lowered">
-          <p>This is a <b>lowered</b> section</p>
-        </div>
-        <br>
-        <button class="button colour greyBackground raised roundedCorners" onclick="toggleDivById('sectionsSnippet')"><i class="fa-solid fa-code"></i></button>
-        <br>
-
-        <!-- Code Snippet for Sections !-->
-
-        <pre id="sectionsSnippet"><code>
-        &lt;div class=&quot;section raised&quot;&gt;
-          &lt;p&gt;This is a &lt;b&gt;raised&lt;/b&gt; section&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;br&gt;
-        &lt;div class=&quot;section&quot;&gt;
-          &lt;p&gt;This is a level section&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;br&gt;
-        &lt;div class=&quot;section lowered&quot;&gt;
-          &lt;p&gt;This is a &lt;b&gt;lowered&lt;/b&gt; section&lt;/p&gt;
-        &lt;/div&gt;
-        </code></pre>
-
-        <br><br>
-
-
-
-
-      </div>
-      <br>
-
-    </div>
-
-
-  </body>
+    </body>
 </html>
