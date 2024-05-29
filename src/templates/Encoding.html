@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <title>CS356 Project - Encoder</title>
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stylesheet.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/additional.css') }}">
+
+        <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
+        <script src="{{ url_for('static',filename='js/index.js') }}" defer></script>
+        <script src="/js/script.js"></script>
+        <script src="https://kit.fontawesome.com/e0a50a6f3e.js" crossorigin="anonymous"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <div id="content">
+        <h1>Config Data Viewer</h1>
+        <form id="configForm">
+            <label for="encoderSelect">Choose an Encoder:</label>
+            <select id="encoderSelect"></select>
+            <br><br>
+            <label for="codecSelect">Choose a Codec:</label>
+            <select id="codecSelect"></select>
+            <br><br>
+            <label for="scalabilitySelect">Choose Scalability Type:</label>
+            <select id="scalabilitySelect"></select>
+        </form>
+        <pre id="jsonData"></pre>
+    </div>
+</body>
+</html>
