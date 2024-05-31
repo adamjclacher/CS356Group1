@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+            <!-- Page content section -->
+            <div class="section splitWidthContainer raised centreContent mainContent">
+              <br>
+                <div class="left">
+                  <h2 class="right colour boldText">LAYER [x] CONFIG</h2>
+                  <br>
+                  <div id="layer" class="section lowered roundedCorners" style="height:300px;">
+                      <a class="button colour roundedCorners raised">Temporal</a>
+                      <br>
+                      <a class="button colour roundedCorners raised">Depth</a>
+                      <br>
+                      <a class="button colour roundedCorners raised">Spacial</a>
+                      <br>
+                      <a class="button colour roundedCorners raised">Time</a>
+                  </div>
+                </div>
+                <div class="right">
+                  <h2 class="right colour boldText">VIDEO OPTIONS</h2>
+                  <br>
+                  <div id="video" class="section lowered roundedCorners" style="height:300px;">
+                      <form class="">
+                          <label class="">Option 1
+                              <input type="radio" name="radio" value="1">
+                              <span class=""></span>
+                          </label>
+                          <br>
+                          <label class="">Option 2
+                              <input type="radio" name="radio" value="2">
+                              <span class=""></span>
+                          </label>
+                          <br>
+                          <label class="">Option 3
+                              <input type="radio" name="radio" value="3">
+                              <span class=""></span>
+                          </label>
+                      </form>
+                  </div>
+                </div>
+            </div>
+            <br>
+            <!-- THIS SECTION TO BE ADDED TO A BASE OR AS A COMPONENT !-->
+            <!-- NEXT PAGE BUTTON -->
+            <div class="splitWidthContainer">
+              <div class="left">
+                <a href="{{ url_for('layerOptions') }}" class="button colour raised roundedCorners backButton"><i class="fa-solid fa-caret-left"></i> Back</a>
+
+              </div>
+              <div class="right" style="text-align:right">
+                <a href="" class="button colour raised roundedCorners nextButton">Next <i class="fa-solid fa-caret-right"></i></a>
+              </div>
+            </div>
+{% endblock %}

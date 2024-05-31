@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+
+            <!-- This section requires:
+                - 3 buttons (create/edit/delete)
+                - Project name text box
+                - 3 radio buttons (encode only/live stream/stream & record) -->
+            <div class="section raised centreContent mainContent" style="text-align:center">
+                        <br><br><br>
+
+                        <!-- CREATE / EDIT / DELETE BUTTONS -->
+                        <a href="" style="width:50%;min-width:300px;max-width:350px;" class="button backgroundColour lowered roundedCorners boldText centreContent">CREATE NEW PROJECT</a><br>
+                        <a href="" style="width:50%;min-width:300px;max-width:350px;" class="button colour raised roundedCorners boldText centreContent disabledButton">EDIT PROJECT</a><br>
+                        <a href="" style="width:50%;min-width:300px;max-width:350px;" class="button colour raised roundedCorners boldText centreContent disabledButton">DELETE PROJECT</a><br>
+                        <br>
+                        <div class="outerInputField" style="width:50%;min-width:300px;max-width:350px;">
+                            <input class="innerInfoField" placeholder="PROJECT NAME" name="projectName" id="projectName" required>
+                        </div>
+                        <br>
+                        <input type="radio" id="encodeOnly" name="radioOption" value="encodeOnly" checked><label for="encodeOnly">ENCODE ONLY</label><br>
+                        <input type="radio" id="liveStream" name="radioOption" value="liveStream"><label for="liveStream">LIVE STREAM</label><br>
+                        <input type="radio" id="streamRecord" name="radioOption" value="streamRecord"><label for="streamRecord">STREAM AND RECORD</label><br>
+
+
+            </div>
+            <br>
+            <!-- THIS SECTION TO BE ADDED TO A BASE OR AS A COMPONENT !-->
+            <!-- NEXT PAGE BUTTON -->
+            <div class="splitWidthContainer">
+              <div class="left">
+              </div>
+              <div class="right" style="text-align:right">
+                <a href="{{ url_for('encoder_viewer') }}" class="button colour raised roundedCorners nextButton">Next <i class="fa-solid fa-caret-right"></i></a>
+              </div>
+            </div>
+
+{% endblock %}
