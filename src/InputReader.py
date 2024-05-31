@@ -7,13 +7,13 @@ with open('resources/InputConfigJSONTemplate.json', 'r') as file:
     data = json.load(file)
 
 
+@dataclass
 class EncoderType:
     name: str
     id: int
     code: str
     active: bool
     active_codecs: List[int]
-
 
 @dataclass
 class Codec:
@@ -24,13 +24,11 @@ class Codec:
     active_encoder_modes: List[int]
     active_scalability: Optional[List[int]]
 
-
 @dataclass
 class EncoderMode:
     name: str
     id: int
     code: str
-
 
 @dataclass
 class RawFile:
@@ -43,13 +41,11 @@ class RawFile:
     depths: List[str]
     metadata: Dict[str, Any]
 
-
 @dataclass
 class PreEncodedFile:
     id: int
     code: str
     duration: str
-
 
 @dataclass
 class Time:
@@ -57,7 +53,6 @@ class Time:
     name: str
     code: str
     duration: str
-
 
 @dataclass
 class ScalabilityType:
@@ -67,14 +62,12 @@ class ScalabilityType:
     code: str
     value: str
 
-
 @dataclass
 class Scalability:
     name: str
     id: int
     code: str
     types: List[ScalabilityType]
-
 
 @dataclass
 class TopologyType:
@@ -84,12 +77,10 @@ class TopologyType:
     image_url: str
     active: bool
 
-
 @dataclass
 class Topology:
     name: str
     types: List[TopologyType]
-
 
 @dataclass
 class Impairment:
@@ -99,7 +90,6 @@ class Impairment:
     active: bool
     active_impairment_values: List[int]
 
-
 @dataclass
 class ImpairmentValue:
     name: str
@@ -108,7 +98,6 @@ class ImpairmentValue:
     active: bool
     value: int
 
-
 @dataclass
 class Config:
     Metadata: Dict[str, str]
@@ -116,7 +105,6 @@ class Config:
     Network: List[Dict[str, Any]]
     Metrics: List[Dict[str, Any]]
     Output: Dict[str, Any]
-
 
 # Parse the JSON into the Config dataclass
 config = Config(**data)
@@ -127,8 +115,4 @@ with open("resources/config.pkl", 'wb') as file:
 with open("resources/config.pkl", "rb") as file:
     loaded_config = pickle.load(file)
 
-print(loaded_config.Metadata)
-print(loaded_config.Encoder)
-print(loaded_config.Network)
-print(loaded_config.Metrics)
-print(loaded_config.Output)
+

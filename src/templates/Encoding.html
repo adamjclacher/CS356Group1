@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <title>CS356 Project - Encoder</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stylesheet.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/additional.css') }}">
+
+    <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
+    <script src="{{ url_for('static',filename='js/index.js') }}" defer></script>
+        <script src="https://kit.fontawesome.com/e0a50a6f3e.js" crossorigin="anonymous"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    </head>
+<body>
+        <div class="content">
+            <div class="section centreContent">
+                <a href="/" class="button colour raised roundedCorners boldText">SETUP</a>
+                <a href="/encoder_viewer" class="button backgroundColour raised roundedCorners boldText">ENCODING</a>
+                <a href="" class="button colour raised roundedCorners boldText">VIDEO</a>
+                <a href="" class="button colour raised roundedCorners boldText disabledButton">NETWORK</a>
+                <a href="" class="button colour raised roundedCorners boldText disabledButton">ANALYSIS</a>
+                <a href="" class="button colour raised roundedCorners boldText disabledButton">OUTPUT</a>
+            </div>
+            <br>
+
+            <div>
+                <div>
+                    <div class="splitWidthContainer">
+                        <div class="left">
+                            <div class="section raised">
+                    <div class="section" style="height: 190px">
+            <h3>Encoders</h3>
+            <br>
+            <div class="section lowered">
+                <label><input type="radio" name="encoder" value="standard"> STANDARD ENCODER</label>
+                <br>
+                <label><input type="radio" name="encoder" value="scalable"> SCALABLE ENCODER</label>
+                <br>
+                <label><input type="radio" name="encoder" value="3d"> 3D/MULTIVIEW ENCODER</label>
+            </div>
+        </div>
+    </div>
+            <br><br><br>
+            <div class="section raised" style="height: 200px">
+            <h3>Encoder Modes</h3>
+                <br>
+            <div class="section lowered">
+                <label><input type="radio" name="encoder" value="random"> RANDOM ACCESS</label><br>
+                <label><input type="radio" name="encoder" value="low_delay"> LOW DELAY</label><br>
+                <label><input type="radio" name="encoder" value="intra_only"> INTRA ONLY</label>
+            </div>
+        </div>
+            </div>
+            <div class="right">
+                <div class="section raised">
+                    <div class="section">
+            <h3>Codecs</h3>
+                        <br>
+            <div class="section lowered">
+                <label><input type="radio" name="codec" value="codec1"> AVC (H.264)</label><br>
+                <label><input type="radio" name="codec" value="codec2"> SVC 19 (H.264)</label>
+                <br>
+                <label><input type="radio" name="codec" value="codec3"> HEVC (H.265)</label><br>
+                <label><input type="radio" name="codec" value="codec4"> SHVC (H.265)</label>
+                <br>
+                <label><input type="radio" name="codec" value="codec5"> JEM v6 (Experimental)</label>
+            </div>
+        </div>
+                </div>
+                <br><br><br>
+                <div class="splitWidthContainer">
+            <div class="left">
+                <div class="section raised">
+                     <div class="section" style="">
+            <h3>Number of Layers</h3>
+            <div class= "section lowered">
+                <label><input type="radio" name="layers" value="1"> 1</label>
+                <br>
+                <label><input type="radio" name="layers" value="2"> 2</label>
+                <br>
+                <label><input type="radio" name="layers" value="3"> 3</label>
+                <br>
+                <label><input type="radio" name="layers" value="4"> 4</label>
+                <br>
+                <label><input type="radio" name="layers" value="5"> 5</label>
+                <br>
+                <label><input type="radio" name="layers" value="6"> 6</label>
+                <br>
+                <label><input type="radio" name="layers" value="7"> 7</label>
+            </div>
+        </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="section raised">
+                    <div class="section">
+            <h3>Scalability</h3>
+                        <br>
+               <div class="section lowered">
+                   <label><input type="radio" name="scalability" value="yes">YES</label><br>
+                   <label><input type="radio" name="scalability" value="no">NO</label>
+
+
+               </div>
+                </div>
+            </div>
+        </div>
+        </div>
+            </div>
+        </div>
+
+                </div>
+            </div>
+            <br>
+            <!-- NEXT PAGE BUTTON -->
+            <div class="section">
+                <div class="splitWidthContainer">
+                    <div class="left"> <div class="left">
+                        <a href="/" class="button colour raised roundedCorners boldText centreContent">BACK</a>
+                    </div></div>
+                    <div class="right">
+                        <div class="splitWidthContainer">
+                            <div class="right">
+                                <a href="" class="button colour raised roundedCorners boldText centreContent"
+                                   onclick="displayPageOptions()">NEXT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
