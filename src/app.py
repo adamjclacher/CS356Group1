@@ -11,12 +11,15 @@ app = Flask(__name__, template_folder="templates/", static_url_path="/static")
 
 @app.route("/")
 def root():
-    return render_template("index.html")
+    pageName = 1
+    print(pageName)
+    return render_template("index.html", pageName=pageName)
 
 
 @app.route("/encoder_viewer")
 def encoder_viewer():
-    return render_template("Encoding.html")
+    pageName = 2
+    return render_template("encoding.html", pageName=pageName)
 
 
 @app.route('/InputReader', methods=['GET'])
@@ -33,17 +36,20 @@ def scrum45():
 
 @app.route('/video-options')
 def videoOptions():
-    return render_template('videoOptions.html')
+    pageName = 3
+    return render_template('videoOptions.html', pageName=pageName)
 
 
 @app.route('/layer-options')
 def layerOptions():
-    return render_template('layerOptions.html')
+    pageName = 4
+    return render_template('layerOptions.html', pageName=pageName)
 
 
 @app.route('/layer-config')
 def layerConfig():
-    return render_template('layerConfig.html')
+    pageName = 5
+    return render_template('layerConfig.html', pageName=pageName)
 
 
 def main():
