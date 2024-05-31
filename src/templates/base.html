@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <head>
+        <meta charset="utf-8">
+        <title>CS356 Project</title>
+
+
+
+        <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
+        <script src="{{ url_for('static',filename='js/index.js') }}" defer></script>
+        <script src="https://kit.fontawesome.com/e0a50a6f3e.js" crossorigin="anonymous"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stylesheet.css') }}">
+
+    </head>
+  </head>
+  <body>
+
+    <main>
+      <div class="content">
+        <!-- THIS SECTION TO BE ADDED TO A BASE OR AS A COMPONENT !-->
+
+        <div class="section" style="text-align:center;">
+          <div style="display:inline-block">
+            <a href="" class="button colour raised roundedCorners boldText">SETUP</a>
+            <a href="" class="button colour raised roundedCorners boldText">ENCODING</a>
+            <a href="" class="button backgroundColour raised roundedCorners boldText">VIDEO</a>
+            <a href="" class="button colour raised roundedCorners boldText disabledButton">NETWORK</a>
+            <a href="" class="button colour raised roundedCorners boldText disabledButton">ANALYSIS</a>
+            <a href="" class="button colour raised roundedCorners boldText disabledButton">OUTPUT</a>
+          </div>
+        </div>
+
+
+        <br>
+
+        {% block content %}
+        {% endblock %}
+
+
+
+      </div>
+    </main>
+
+    <footer>
+      <!-- Common footer content -->
+    </footer>
+  </body>
+
+
+
+
+
+
+<style media="screen">
+
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+      transition: 0.2s;
+      transition: 0.1s
+  }
+
+  *:focus {
+      outline: none;
+  }
+
+  a:hover{
+    cursor: pointer;
+  }
+
+  .backgroundColour{
+    background-color: #b80474;
+    color: #dde1e7;
+  }
+
+  .colour{
+    color: #b80474;
+  }
+
+  body{
+    background-color: #dde1e7;
+  }
+
+
+  .content{
+    width: 100%;
+    min-height: 100vh;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #dde1e7;
+  }
+
+  .greyBackground{
+    background-color: #dde1e7;
+  }
+
+  p{
+    font-size: 20px;
+    color: grey;
+  }
+
+  h1, h2, h3, h4 {
+    color: grey;
+  }
+
+  .section{
+    background: #dde1e7;
+    border-radius: 10px;
+    padding: 25px;
+  }
+
+  .page-section{
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    color: grey;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .fiftyLeft{
+    width: 49%;
+    display: inline-block;
+  }
+  .fiftyRight{
+    width: 49%;
+    margin-left: 1%;
+    display: inline-block;
+  }
+
+  /*Neomorphism https://www.geeksforgeeks.org/how-to-create-neumorphism-effect-using-html-and-css/*/
+
+  .roundedCorners{
+    border-radius: 15px;
+  }
+
+  .button{
+    padding: 10px 25px 10px 25px;
+    text-decoration: none;
+    margin: 10px;
+    display: inline-block;
+    border: none;
+    outline: none;
+  }
+
+  .layerFilesButton{
+    padding: 1px 25px 1px 25px;
+    text-decoration: none;
+    margin: 10px;
+    display: inline-block;
+    border: none;
+    outline: none;
+  }
+
+  .smallHeader{
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .button:hover{
+    box-shadow: -0px -0px 0px #ffffffb2,
+                  0px 0px 0px rgba(0, 0, 0, 0);
+  }
+
+  .button:active{
+    box-shadow: inset -3px -3px 7px #ffffffb0,
+    inset 3px 3px 5px rgba(94, 104, 121, 0.692);
+  }
+
+  .raised {
+    position: relative;
+    box-shadow: -3px -3px 7px #ffffffb2,
+                    3px 3px 5px rgba(94, 104, 121, 0.945);
+  }
+
+  .lowered {
+    box-shadow: inset -3px -3px 7px #ffffffb0,
+    inset 3px 3px 5px rgba(94, 104, 121, 0.692);
+  }
+
+
+  /* TABS */
+  .tab {
+    overflow: hidden;
+    border-radius: 15px;
+    padding: 7px;
+  }
+
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    font-size: 18px;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    border-radius: 15px;
+    margin-right: 15px;
+    box-shadow: -3px -3px 7px #ffffffb2,
+                    3px 3px 5px rgba(94, 104, 121, 0.945);
+
+  }
+
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    color: #b80474;
+  }
+
+  /* Create an active/current tablink class */
+  .tab button.active {
+    position: relative;
+    color: #b80474;
+    box-shadow: inset -3px -3px 7px #ffffffb0,
+    inset 3px 3px 5px rgba(94, 104, 121, 0.692);
+
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 15px;
+    border-top: none;
+  }
+
+  /* SPLIT WIDTH SECTIONS */
+
+  .splitWidthContainer {
+    display:table;
+    width: 100%;
+  }
+  .left, .right {
+    display: table-cell;
+    width: 50%;
+    padding: 7px;
+  }
+
+  /* THREE ACROSS SECTIONS */
+
+  .leftThird, .centreThird, .rightThird {
+    display: table-cell;
+    width: 33%;
+    padding: 7px;
+  }
+
+  /* Basic styles for the code snippets */
+
+  pre {
+      padding: 10px;
+      overflow: auto;
+      border-radius: 15px;
+      box-shadow: inset -3px -3px 7px #ffffffb0,
+      inset 3px 3px 5px rgba(94, 104, 121, 0.692);
+      display: none;
+  }
+
+  code {
+      font-family: 'Courier New', Courier, monospace;
+      overflow-x: auto;
+  }
+
+
+  .toggleButton{
+
+  }
+
+
+
+  @media screen and (max-width:1000px) {
+    .fiftyLeft{
+      width: 100%;
+    }
+    .fiftyRight{
+      width: 100%;
+      margin-left: 0%;
+    }
+    .left, .right {
+      display: inline-block;
+      width: 100%;
+      padding: 7px;
+    }
+  }
+
+</style>
+</html>
