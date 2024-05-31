@@ -3,7 +3,7 @@
 
 from flask import Flask, render_template
 
-app = Flask(__name__, template_folder="templates/")
+app = Flask(__name__, template_folder="templates/", static_url_path="/static")
 
 
 @app.route("/")
@@ -17,6 +17,10 @@ def scrum45():
 @app.route('/video-options')
 def videoOptions():
     return render_template('videoOptions.html')
+
+@app.route('/layer-options')
+def layerOptions():
+    return render_template('layerOptions.html')
 
 def main():
     print("Flask listening on port 8080.")
