@@ -9,7 +9,7 @@
 
 }
 
-textarea, input, select{
+textarea, input{
   resize: none;
   border: none;
   outline: none;
