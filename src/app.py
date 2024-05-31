@@ -18,6 +18,10 @@ def scrum45():
 def videoOptions():
     return render_template('videoOptions.html')
 
+@app.route('/layer-config')
+def layerConfig():
+    return render_template('layerConfig.html')
+
 def main():
     print("Flask listening on port 8080.")
     app.run(debug=True, use_reloader=False, port=8080)
