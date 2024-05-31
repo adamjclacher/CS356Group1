@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>CS356 Project - Home</title>
+        <title>Video Options</title>
 
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stylesheet.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/additional.css') }}">
@@ -20,9 +20,9 @@
     <body>
         <div class="content">
             <div class="section centreContent">
-                <a href="{{ url_for('root') }}" class="button backgroundColour raised roundedCorners boldText">SETUP</a>
+                <a href="" class="button color raised roundedCorners boldText">SETUP</a>
                 <a href="" class="button colour raised roundedCorners boldText">ENCODING</a>
-                <a href="{{ url_for('scrum45') }}" class="button colour raised roundedCorners boldText">VIDEO</a>
+                <a href="" class="button backgroundColour raised roundedCorners boldText">VIDEO</a>
                 <a href="" class="button colour raised roundedCorners boldText disabledButton">NETWORK</a>
                 <a href="" class="button colour raised roundedCorners boldText disabledButton">ANALYSIS</a>
                 <a href="" class="button colour raised roundedCorners boldText disabledButton">OUTPUT</a>
@@ -33,36 +33,44 @@
                 - Project name text box
                 - 3 radio buttons (encode only/live stream/stream & record) -->
             <div class="section raised centreContent">
-                <div>
-                    <table>
-                        <!-- CREATE / EDIT / DELETE BUTTONS -->
-                        <tr><td><a href="" class="button backgroundColour lowered roundedCorners boldText centreContent">CREATE NEW PROJECT</a></td></tr>
-                        <tr><td><a href="" class="button colour raised roundedCorners boldText centreContent disabledButton">EDIT PROJECT</a></td></tr>
-                        <tr><td><a href="" class="button colour raised roundedCorners boldText centreContent disabledButton">DELETE PROJECT</a></td></tr>
-                        <tr><td><br></td></tr>
-                        <tr><td>
-                            <div class="outerInputField">
-                                <input class="innerInfoField" placeholder="PROJECT NAME" name="projectName" id="projectName" required>
-                            </div>
-                        </td></tr>
-                        <tr><td><br></td></tr>
-                        <tr><td><input type="radio" id="encodeOnly" name="radioOption" value="encodeOnly" checked><label for="encodeOnly">ENCODE ONLY</label><br></td></tr>
-                        <tr><td><input type="radio" id="liveStream" name="radioOption" value="liveStream"><label for="liveStream">LIVE STREAM</label><br></td></tr>
-                        <tr><td><input type="radio" id="streamRecord" name="radioOption" value="streamRecord"><label for="streamRecord">STREAM AND RECORD</label><br></td></tr>
-                    </table>
+                <div class="section lowered roundedCorners">
+                  <h2 class="colour boldText">Video Selection</h2>
+                  <br>
+                  <form class="">
+                      <label class="centreContent">Video 1
+                          <input type="radio" name="radio" value="1">
+                          <span class=""></span>
+                      </label>
+                      <br>
+                      <label class="centreContent">Video 2
+                          <input type="radio" name="radio" value="2">
+                          <span class=""></span>
+                      </label>
+                      <br>
+                      <label class="centreContent">Video 3
+                          <input type="radio" name="radio" value="3">
+                          <span class=""></span>
+                      </label>
+                  </form>
+
                 </div>
             </div>
             <br>
             <!-- NEXT PAGE BUTTON -->
             <div class="section">
                 <div class="splitWidthContainer">
-                    <div class="left"></div>
                     <div class="right">
+                      <div class="right">
+                          <a href="" class="button colour raised roundedCorners boldText centreContent"
+                             onclick="displayPageOptions()">PREVIOUS</a>
+                      </div>
+                    </div>
+                    <div class="left">
                         <div class="splitWidthContainer">
                             <div class="left"></div>
-                            <div class="right">
+                            <div class="left">
                                 <a href="" class="button colour raised roundedCorners boldText centreContent"
-                                   onclick="displayPageOptions()">NEXT</a>
+                                   onclick="displayPageOptions()">LAYER OPTIONS</a>
                             </div>
                         </div>
                     </div>
