@@ -1,32 +1,24 @@
 # Basic Flask Server
 # FOR CS356 GROUP PROJECT - GROUP ONE
 
-from InputReader import Config, EncoderType, Codec, EncoderMode, RawFile, PreEncodedFile, Time, ScalabilityType, Scalability, TopologyType, Topology, Impairment, ImpairmentValue
-# Horrible import will fix later ^
-from flask import Flask, render_template, jsonify
-import pickle
+from flask import Flask, render_template, jsonify, request
+from input_reader import InputReader
 
-app = Flask(__name__, template_folder="templates/", static_url_path="/static")
+app = Flask(__name__, template_folder='templates/', static_url_path='/static')
+
+input_reader = 0
 
 
-@app.route("/")
+@app.route('/')
 def root():
-    pageName = 1
-    print(pageName)
-    return render_template("index.html", pageName=pageName)
+    page_name = 1
+    return render_template('index.html', pageName=page_name)
 
 
-@app.route("/encoder_viewer")
+@app.route('/encoder_viewer')
 def encoder_viewer():
-    pageName = 2
-    return render_template("encoding.html", pageName=pageName)
-
-
-@app.route('/InputReader', methods=['GET'])
-def get_config():
-    with open('resources/config.pkl', 'rb') as file:
-        config = pickle.load(file)
-    return jsonify(config)
+    page_name = 2
+    return render_template('encoding.html', pageName=page_name)
 
 
 @app.route('/scrum45')
@@ -35,29 +27,59 @@ def scrum45():
 
 
 @app.route('/video-options')
-def videoOptions():
-    pageName = 3
-    return render_template('videoOptions.html', pageName=pageName)
+def video_options():
+    page_name = 3
+    return render_template('videoOptions.html', pageName=page_name)
 
 
 @app.route('/layer-options')
-def layerOptions():
-    pageName = 4
-    return render_template('layerOptions.html', pageName=pageName)
+def layer_options():
+    page_name = 4
+    return render_template('layerOptions.html', pageName=page_name)
 
 
 @app.route('/layer-config')
-def layerConfig():
-    pageName = 5
-    return render_template('layerConfig.html', pageName=pageName)
+def layer_config():
+    page_name = 5
+    return render_template('layerConfig.html', pageName=page_name)
+
+
+@app.route('/sample_conditional')
+def sample_conditional():
+    return render_template('sample_conditional.html', config=input_reader.get_config())
+
+
+@app.route('/api/config', methods=['GET'])
+def get_config():
+    section_parameter = request.args.get('section')
+
+    response_code = 200
+
+    if not section_parameter:
+        output = input_reader.get_config()
+    else:
+        try:
+            output = input_reader.get_config_section(section_parameter)
+        except KeyError:
+            output = {'Error': 'An invalid section parameter was passed to this endpoint.'}
+            response_code = 400
+
+    return jsonify(output), response_code
 
 
 def main():
-    print("Flask listening on port 8080.")
+    global input_reader
+
+    try:
+        input_reader = InputReader('resources/InputConfigJSONTemplate.json')
+    except ValueError as ve:
+        print(f'InputReader failed to read from the given JSON: {ve}')
+
+    print('[LOG] Flask listening on port 8080.')
     app.run(debug=True, use_reloader=False, port=8080)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
