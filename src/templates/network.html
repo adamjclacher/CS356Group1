@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+            <!-- This section requires:
+                - 3 buttons (create/edit/delete)
+                - Project name text box
+                - 3 radio buttons (encode only/live stream/stream & record) -->
+            <div class="section raised centreContent mainContent" style="text-align:center">
+              <br><br>
+              <h1 class="colour boldText">NETWORK TYPE</h1>
+              <br><br>
+                <div class="section  roundedCorners" style="width:300px;display:inline-block">
+
+                  <form class="">
+                      <label class="centreContent">BASIC IP
+                          <input type="radio" name="radio" value="1">
+                          <span class=""></span>
+                      </label>
+                      <br><br>
+                      <label class="centreContent">5G TOPOLOGY
+                          <input type="radio" name="radio" value="2">
+                          <span class=""></span>
+                      </label>
+                      <br><br>
+                      <label class="centreContent">5G TOPOLOGY AND RAN
+                          <input type="radio" name="radio" value="3">
+                          <span class=""></span>
+                      </label>
+                  </form>
+
+                </div>
+                <br><br>
+                <a href="{{ url_for('impairment_options') }}" style="width:50%;min-width:300px;max-width:350px;" class="button colour raised roundedCorners boldText centreContent">IMPAIRMENT OPTIONS</a><br>
+
+            </div>
+            <br>
+            <!-- THIS SECTION TO BE ADDED TO A BASE OR AS A COMPONENT !-->
+            <!-- NEXT PAGE BUTTON -->
+            <div class="splitWidthContainer">
+              <div class="left">
+                <a href="{{ url_for('layer_options') }}" class="button colour raised roundedCorners backButton"><i class="fa-solid fa-caret-left"></i> Back</a>
+
+              </div>
+              <div class="right" style="text-align:right">
+              </div>
+            </div>
+{% endblock %}
