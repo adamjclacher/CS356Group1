@@ -32,7 +32,7 @@
             <a id="encoderOptionsButton" href="{{ url_for('encoder_viewer') }}" class="button colour raised roundedCorners boldText">ENCODING</a>
             <a id="videoOptionsButton" href="{{ url_for('video_options') }}" class="button colour raised roundedCorners boldText">VIDEO</a>
             <a href="" class="button colour raised roundedCorners boldText disabledButton">NETWORK</a>
-            <a href="" class="button colour raised roundedCorners boldText disabledButton">ANALYSIS</a>
+            <a href="{{ url_for('analysis_viewer') }}" class="button colour raised roundedCorners boldText disabledButton">ANALYSIS</a>
             <a href="" class="button colour raised roundedCorners boldText disabledButton">OUTPUT</a>
           </div>
         </div>
