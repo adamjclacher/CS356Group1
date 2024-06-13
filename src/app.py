@@ -48,6 +48,18 @@ def layer_config():
     return render_template('layerConfig.html', pageName=page_name)
 
 
+@app.route('/network')
+def network():
+    page_name = 6
+    return render_template('network.html', pageName=page_name)
+
+
+@app.route('/impairment-options')
+def impairment_options():
+    page_name = 7
+    return render_template('impairment_options.html', pageName=page_name)
+
+
 @app.route('/sample_conditional')
 def sample_conditional():
     return render_template('sample_conditional.html', config=input_reader.get_config())
