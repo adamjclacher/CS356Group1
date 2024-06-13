@@ -14,6 +14,10 @@ def root():
     page_name = 1
     return render_template('index.html', pageName=page_name)
 
+@app.route('/analysis_viewer')
+def analysis_viewer():
+    page_name = 6
+    return render_template('analysis.html', page_name=page_name)
 
 @app.route('/encoder_viewer')
 def encoder_viewer():
