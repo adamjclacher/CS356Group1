@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sample Conditional Elements</title>
+    </head>
+    <body>
+        <!-- Output the entire config metadata section: -->
+        <p>Metadata Section: {{ config['Metadata'] }}</p>
+
+        <!-- Here we can do if statements -->
+        {% if config['Metadata']['last_update'] == 'update_num' %}
+            <p>true</p>
+        {% else %}
+            <p>false</p>
+        {% endif %}
+
+        <!-- Here we can do iteration, very good for dynamic content -->
+        <p>We have the following sections in our JSON:</p>
+
+        {% for key, value in config.items() %}
+        <ul>
+          <li>{{ key }}</li>
+        </ul>
+        {% endfor %}
+
+    </body>
+</html>

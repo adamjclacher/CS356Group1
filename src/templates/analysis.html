@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+<div class="section raised splitWidthContainer mainContent">
+    <div class="left">
+        <h1 class="colour">ANALYSIS RULES</h1>
+        <div class="section">
+          <a id="detailedButton" class="button colour raised roundedCorners" style="width: 100%; text-align:center" value="Detailed">Detailed</a>
+          <br>
+          <a id="summaryButton" class="button colour raised roundedCorners" style="width: 100%; text-align:center" value="Detailed">Summary</a>
+
+        </div>
+
+        <div class="splitWidthContainer">
+            <div class="left">
+                <h2 class="colour"> COMP 1</h2>
+                <br>
+                <div class="section lowered">
+                    <label><input type="radio" name="COMP1" value="BS"> Between Sequences </label>
+                            <br><br>
+                    <label><input type="radio" name="COMP1" value="BV"> Between Variants </label>
+                            <br><br>
+                    <label><input type="radio" name="COMP1" value="All"> All </label>
+                </div>
+            </div>
+            <div class="right">
+                <h2 class="colour"> COMP 2</h2>
+                <br>
+                 <div class="section lowered">
+
+                    <label><input type="radio" name="COMP2" value="Original v Client Playback"> OG v Client Playback</label>
+                            <br><br>
+                    <label><input type="radio" name="COMP2" value="Reconstructed v Client Playback"> RECON v Client Playback</label>
+                            <br><br>
+                    <label><input type="radio" name="COMP2" value="All"> All</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right">
+        <h1 class="colour">AVAILABLE METRICS</h1>
+        <br>
+        <div class="section lowered">
+            <label><input type="radio" name="bitrate(E)" value="Bitrate(E)">Bitrate(Encoded) </label>
+                            <br><br>
+            <label><input type="radio" name="bitrate(MP4)" value="Bitrate(MP4)">Bitrate (MP4) </label>
+                            <br><br>
+            <label><input type="radio" name="PSNR" value="PSNR">PSNR </label>
+                            <br><br>
+            <label><input type="radio" name="SSIM" value="SSIM">SSIM </label>
+                            <br><br>
+            <label><input type="radio" name="DMOS" value="DMOS">DMOS </label>
+                            <br><br>
+            <label><input type="radio" name="VQM" value="VQM">VQM </label>
+                            <br><br>
+            <label><input type="radio" name="SubjectiveMOS" value="SubjectiveMOS">Subjective MOS</label>
+                            <br><br>
+                            <br>
+        </div>
+    </div>
+</div>
+
+<div class="splitWidthContainer">
+              <div class="left">
+                <a href="{{ url_for('impairment_options') }}" class="button colour raised roundedCorners backButton"><i class="fa-solid fa-caret-left"></i> Back</a>
+
+
+              </div>
+              <div class="right" style="text-align:right">
+                <a href="{{ url_for('output') }}" class="button colour raised roundedCorners nextButton">Next <i class="fa-solid fa-caret-right"></i></a>
+              </div>
+            </div>
+
+
+            <script>
+                    // JavaScript to handle the button click events
+                    document.addEventListener("DOMContentLoaded", function() {
+                        const detailedButton = document.getElementById("detailedButton");
+                        const summaryButton = document.getElementById("summaryButton");
+
+                        detailedButton.addEventListener("click", function() {
+                            toggleButtonClasses(detailedButton, summaryButton);
+                        });
+
+                        summaryButton.addEventListener("click", function() {
+                            toggleButtonClasses(summaryButton, detailedButton);
+                        });
+
+                        function toggleButtonClasses(clickedButton, otherButton) {
+                            clickedButton.classList.remove("raised");
+                            clickedButton.classList.add("lowered");
+
+                            otherButton.classList.remove("lowered");
+                            otherButton.classList.add("raised");
+                        }
+                    });
+                </script>
+{% endblock %}

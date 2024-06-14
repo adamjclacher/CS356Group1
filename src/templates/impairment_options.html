@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+            <!-- LAYER OPTIONS PAGE !-->
+            <div class="section raised centreContent mainContent" style="">
+              <br>
+
+              <div class="splitWidthContainer" style="height:calc(100% - 100px);">
+                <!-- Layer 0 !-->
+                <div class="leftThird" style="text-align:center">
+                  <h2 class="colour">PACKET LOSS</h2><br>
+                  <div class="section lowered" style="text-align:center;min-height:200px;">
+                    <div style="text-align:left;display:inline-block;">
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="packet_loss" value="0"> 0%
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="packet_loss" value="1"> 1%
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="packet_loss" value="3"> 3%
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="packet_loss" value="5"> 5%
+                      </label>
+                    </div>
+
+                  </div>
+                  <br>
+
+                  <h2 class="colour">JITTER (%)</h2><br>
+                  <div class="section lowered" style="text-align:center;min-height:200px;">
+                    <div style="text-align:left;display:inline-block;">
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="jitter" value="0"> 0%
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="jitter" value="1"> 1%
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="jitter" value="3"> 3%
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="jitter" value="5"> 5%
+                      </label>
+                    </div>
+
+                  </div>
+
+
+                </div>
+                <!-- Layer 1 !-->
+                <div class="centreThird" style="text-align:center">
+                  <h2 class="colour">THROTTLE BANDWIDTH</h2><br>
+                  <div class="section lowered" style="text-align:center;min-height:200px;">
+                    <div style="text-align:left;display:inline-block;">
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="throttle_bandwidth" value="0"> 0% reduction
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="throttle_bandwidth" value="1"> 1% reduction
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="throttle_bandwidth" value="3"> 3% reduction
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="throttle_bandwidth" value="5"> 5% reduction
+                      </label>
+                    </div>
+                  </div>
+                  <br>
+                  <h2 class="colour">END TO END DELAY (ms)</h2><br>
+                  <div class="section lowered" style="text-align:center;min-height:200px;">
+                    <div style="text-align:left;display:inline-block;">
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="end_to_end_delay" value="50"> 50ms
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="end_to_end_delay" value="100"> 100ms
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="end_to_end_delay" value="150"> 150ms
+                      </label><br><br>
+                      <label style="padding:15px;">
+                        <input type="checkbox" name="end_to_end_delay" value="300"> 300ms
+                      </label>
+                    </div>
+                  </div>
+
+
+                </div>
+                <!-- Layer 2 !-->
+                <div class="rightThird" style="text-align:center">
+                  <h2> <br></h2><br>
+                  <div class="section" style="text-align:center;min-height:450px;">
+                    <br>
+                    <h2 class="colour">IMPAIRMENT<br>COUNT</h2>
+                    <br>
+                    <div class="section lowered" style="text-align:center;height:200px;">
+                      <br>
+                      <br>
+                      <br>
+                      <h2 class="colour">0/4</h2>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <!-- THIS SECTION TO BE ADDED TO A BASE OR AS A COMPONENT !-->
+            <!-- NEXT PAGE BUTTON -->
+            <div class="splitWidthContainer">
+              <div class="left">
+                <a href="{{ url_for('network') }}" class="button colour raised roundedCorners backButton"><i class="fa-solid fa-caret-left"></i> Back</a>
+              </div>
+              <div class="right" style="text-align:right">
+                <a href="{{ url_for('analysis_viewer') }}" class="button colour raised roundedCorners nextButton">Next <i class="fa-solid fa-caret-right"></i></a>
+              </div>
+            </div>
+
+
+
+
+
+<style>
+
+
+</style>
+{% endblock %}

@@ -30,10 +30,10 @@
           <div style="display:inline-block">
             <a id="setupButton" href="{{ url_for('root') }}" class="button colour raised roundedCorners boldText">SETUP</a>
             <a id="encoderOptionsButton" href="{{ url_for('encoder_viewer') }}" class="button colour raised roundedCorners boldText">ENCODING</a>
-            <a id="videoOptionsButton" href="{{ url_for('videoOptions') }}" class="button colour raised roundedCorners boldText">VIDEO</a>
-            <a href="" class="button colour raised roundedCorners boldText disabledButton">NETWORK</a>
-            <a href="" class="button colour raised roundedCorners boldText disabledButton">ANALYSIS</a>
-            <a href="" class="button colour raised roundedCorners boldText disabledButton">OUTPUT</a>
+            <a id="videoOptionsButton" href="{{ url_for('video_options') }}" class="button colour raised roundedCorners boldText">VIDEO</a>
+            <a id="networkButton" href="{{ url_for('network') }}" class="button colour raised roundedCorners boldText disabledButton">NETWORK</a>
+            <a id="analysisPageButton" href="{{ url_for('analysis_viewer') }}" class="button colour raised roundedCorners boldText disabledButton">ANALYSIS</a>
+            <a id="outputButton" href="{{ url_for('output') }}" class="button colour raised roundedCorners boldText disabledButton">OUTPUT</a>
           </div>
         </div>
 
@@ -54,7 +54,41 @@
   </body>
 
 
+  <script>
 
+  document.addEventListener('DOMContentLoaded', function() {
+          var pageName = {{ pageName }}; // Ensure pageName is passed correctly from Flask
+
+          var setupButton = document.getElementById('setupButton');
+          var encoderOptionsButton = document.getElementById('encoderOptionsButton');
+          var videoOptionsButton = document.getElementById('videoOptionsButton');
+
+          var networkButton = document.getElementById('networkButton');
+          var analysisPageButton = document.getElementById('analysisPageButton');
+          var outputButton = document.getElementById('outputButton');
+
+          // Add the new class based on the value of pageName
+          if (pageName === 1) {
+            setupButton.classList.add('backgroundColour');
+            setupButton.style.color = '#efefef';
+          } else if (pageName === 2) {
+            encoderOptionsButton.classList.add('backgroundColour');
+            encoderOptionsButton.style.color = '#efefef';
+          } else if (pageName >= 3 && pageName <= 5) {
+            videoOptionsButton.classList.add('backgroundColour');
+            videoOptionsButton.style.color = '#efefef';
+          } else if(pageName === 6 || pageName === 7){
+            networkButton.classList.add('backgroundColour');
+            networkButton.style.color = '#efefef';
+          } else if(pageName === 8){
+            analysisPageButton.classList.add('backgroundColour');
+            analysisPageButton.style.color = '#efefef';
+          } else if(pageName === 9){
+            outputButton.classList.add('backgroundColour');
+            outputButton.style.color = '#efefef';
+          }
+        });
+  </script>
 
 
 
@@ -380,26 +414,5 @@
 </style>
 
 
-<script>
 
-document.addEventListener('DOMContentLoaded', function() {
-        var pageName = {{ pageName }}; // Ensure pageName is passed correctly from Flask
-
-        var setupButton = document.getElementById('setupButton');
-        var encoderOptionsButton = document.getElementById('encoderOptionsButton');
-        var videoOptionsButton = document.getElementById('videoOptionsButton');
-
-        // Add the new class based on the value of pageName
-        if (pageName === 1) {
-          setupButton.classList.add('backgroundColour');
-          setupButton.style.color = '#efefef';
-        } else if (pageName === 2) {
-          encoderOptionsButton.classList.add('backgroundColour');
-          encoderOptionsButton.style.color = '#efefef';
-        } else if (pageName >= 3 && pageName <= 5) {
-          videoOptionsButton.classList.add('backgroundColour');
-          videoOptionsButton.style.color = '#efefef';
-        }
-      });
-</script>
 </html>

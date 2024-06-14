@@ -9,39 +9,41 @@
                 - 3 radio buttons (encode only/live stream/stream & record) -->
             <div class="section raised centreContent mainContent" style="text-align:center">
               <br><br>
-              <h1 class="colour boldText">Video Selection</h1>
+              <h1 class="colour boldText">NETWORK TYPE</h1>
               <br><br>
-                <div class="section lowered roundedCorners" style="width:300px;display:inline-block">
+                <div class="section  roundedCorners" style="width:300px;display:inline-block">
 
                   <form class="">
-                      <label class="centreContent">Video 1
+                      <label class="centreContent">BASIC IP
                           <input type="radio" name="radio" value="1">
                           <span class=""></span>
                       </label>
                       <br><br>
-                      <label class="centreContent">Video 2
+                      <label class="centreContent">5G TOPOLOGY
                           <input type="radio" name="radio" value="2">
                           <span class=""></span>
                       </label>
                       <br><br>
-                      <label class="centreContent">Video 3
+                      <label class="centreContent">5G TOPOLOGY AND RAN
                           <input type="radio" name="radio" value="3">
                           <span class=""></span>
                       </label>
                   </form>
 
                 </div>
+                <br><br>
+                <a href="{{ url_for('impairment_options') }}" style="width:50%;min-width:300px;max-width:350px;" class="button colour raised roundedCorners boldText centreContent">IMPAIRMENT OPTIONS</a><br>
+
             </div>
             <br>
             <!-- THIS SECTION TO BE ADDED TO A BASE OR AS A COMPONENT !-->
             <!-- NEXT PAGE BUTTON -->
             <div class="splitWidthContainer">
               <div class="left">
-                <a href="{{ url_for('encoder_viewer') }}" class="button colour raised roundedCorners backButton"><i class="fa-solid fa-caret-left"></i> Back</a>
+                <a href="{{ url_for('layer_options') }}" class="button colour raised roundedCorners backButton"><i class="fa-solid fa-caret-left"></i> Back</a>
 
               </div>
               <div class="right" style="text-align:right">
-                <a href="{{ url_for('layerOptions') }}" class="button colour raised roundedCorners nextButton">Next <i class="fa-solid fa-caret-right"></i></a>
               </div>
             </div>
 {% endblock %}

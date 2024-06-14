@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+            <!-- LAYER OPTIONS PAGE !-->
+            <div id="page1" class="section raised centreContent mainContent" style="">
+              <br>
+
+              <div class="splitWidthContainer" style="height:calc(100% - 100px);">
+                <!-- Layer 0 !-->
+                <div class="leftThird" style="text-align:center">
+                  <h2 class="colour">LAYER 0 FILES</h2><br>
+                  <div class="section lowered" style="text-align:center;min-height:400px;">
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Temporal</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Depth</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Spacial</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Time</a><br>
+                    <br><br><br>
+                    <a href="{{ url_for('layer_config') }}" class="button colour raised roundedCorners">Configure</a>
+                  </div>
+                </div>
+                <!-- Layer 1 !-->
+                <div class="centreThird" style="text-align:center">
+                  <h2 class="colour">LAYER 1 FILES</h2><br>
+                  <div class="section lowered" style="text-align:center;min-height:400px;">
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Temporal</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Depth</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Spacial</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Time</a><br>
+                    <br><br><br>
+                    <a href="{{ url_for('layer_config') }}" class="button colour raised roundedCorners">Configure</a>
+                  </div>
+                </div>
+                <!-- Layer 2 !-->
+                <div class="rightThird" style="text-align:center">
+                  <h2 class="colour">LAYER 2 FILES</h2><br>
+                  <div class="section lowered" style="text-align:center;min-height:400px;">
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Temporal</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Depth</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Spacial</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Time</a><br>
+                    <br><br><br>
+                    <a href="{{ url_for('layer_config') }}" class="button colour raised roundedCorners">Configure</a>
+                  </div>
+                </div>
+
+              </div>
+              <!-- Next and previous buttons for layers !-->
+              <div class="splitWidthContainer">
+                <div class="left">
+                </div>
+                <div class="right" style="text-align:right">
+                  <a onclick="switchToLayerOptionsPage(2)" class="button colour raised roundedCorners nextButton">3 - 5 <i class="fa-solid fa-caret-right"></i></a>
+                </div>
+              </div>
+
+            </div>
+
+
+            <!-- LAYER OPTIONS PAGE !-->
+            <div id="page2" class="section raised centreContent mainContent" style="display:none">
+              <br>
+
+              <div class="splitWidthContainer" style="height:calc(100% - 100px);">
+                <!-- Layer 3 !-->
+                <div class="leftThird" style="text-align:center">
+                  <h2 class="colour">LAYER 3 FILES</h2><br>
+                  <div class="section lowered" style="text-align:center;min-height:400px;">
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Temporal</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Depth</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Spacial</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Time</a><br>
+                    <br><br><br>
+                    <a href="{{ url_for('layer_config') }}" class="button colour raised roundedCorners">Configure</a>
+                  </div>
+                </div>
+                <!-- Layer 4 !-->
+                <div class="centreThird" style="text-align:center">
+                  <h2 class="colour">LAYER 4 FILES</h2><br>
+                  <div class="section lowered" style="text-align:center;min-height:400px;">
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Temporal</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Depth</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Spacial</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Time</a><br>
+                    <br><br><br>
+                    <a href="{{ url_for('layer_config') }}" class="button colour raised roundedCorners">Configure</a>
+                  </div>
+                </div>
+                <!-- Layer 5 !-->
+                <div class="rightThird" style="text-align:center">
+                  <h2 class="colour">LAYER 5 FILES</h2><br>
+                  <div class="section lowered" style="text-align:center;min-height:400px;">
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Temporal</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Depth</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Spacial</a><br>
+                    <a href="{{ url_for('layer_config') }}" class="layerFilesButton colour">Time</a><br>
+                    <br><br><br>
+                    <a href="{{ url_for('layer_config') }}" class="button colour raised roundedCorners">Configure</a>
+                  </div>
+                </div>
+
+              </div>
+              <!-- Next and previous buttons for layers !-->
+              <div class="splitWidthContainer">
+                <div class="left">
+                  <a onclick="switchToLayerOptionsPage(1)" class="button colour raised roundedCorners backButton"><i class="fa-solid fa-caret-left"></i> 0 - 2</a>
+                </div>
+                <div class="right" style="text-align:right">
+                </div>
+              </div>
+
+            </div>
+
+
+            <br>
+            <!-- THIS SECTION TO BE ADDED TO A BASE OR AS A COMPONENT !-->
+            <!-- NEXT PAGE BUTTON -->
+            <div class="splitWidthContainer">
+              <div class="left">
+                <a href="{{ url_for('video_options') }}" class="button colour raised roundedCorners backButton"><i class="fa-solid fa-caret-left"></i> Back</a>
+              </div>
+              <div class="right" style="text-align:right">
+                <a href="{{ url_for('network') }}" class="button colour raised roundedCorners nextButton">Next <i class="fa-solid fa-caret-right"></i></a>
+              </div>
+            </div>
+
+
+
+        </div>
+
+
+<script>
+
+var pageName = 1;
+
+function switchToLayerOptionsPage(switchTo) {
+  if (switchTo == 2) {
+    document.getElementById('page1').style.display = 'none';
+    document.getElementById('page2').style.display = 'block';
+  } else{
+    document.getElementById('page2').style.display = 'none';
+    document.getElementById('page1').style.display = 'block';
+  }
+
+}
+
+</script>
+
+<style>
+
+
+</style>
+{% endblock %}
