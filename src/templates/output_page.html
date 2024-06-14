@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<div class="section raised splitWidthContainer mainContent">
+  <div class="section centreContent" style="text-align:center;">
+      <h1 class="colour">OUTPUT OPTIONS</h1>
+  </div>
+  <br>
+  <div class="section centreContent" style="height: 300px">
+      <div class="centreContent">
+          <div class="splitWidthContainer">
+              <div class="left" style="text-align:right">
+                <div class="" style="display:inline-block;text-align:left">
+                  <label><input type="radio" name="output" value="encodedBinaries"> Encoded Binaries </label>
+                  <br>
+                  <label><input type="radio" name="output" value="logFilesEncoder"> Log Files (encoder) </label>
+                  <br>
+                  <label><input type="radio" name="output" value="statistics"> Statistics </label>
+                  <br>
+                  <label><input type="radio" name="output" value="logFilesStreamer"> Log Files (streamer) </label>
+                </div>
+              </div>
+              <div class="right" style="text-align:left;">
+                <div class="" style="display:inline-block;">
+                  <label><input type="radio" name="output" value="reference"> Reference MP4 Files </label>
+                  <br>
+                  <label><input type="radio" name="output" value="playback"> Playback MP4 Files </label>
+                  <br>
+                  <label><input type="radio" name="output" value="encoderConfigFiles"> Encoder Config Files </label>
+                  <br>
+                  <label><input type="radio" name="output" value="subjectiveTesting"> Subjective Testing Data Set </label>
+
+                </div>
+
+              </div>
+          </div>
+      </div></div>
+
+  <div class="section">
+  <div class="centreContent" style="text-align:center;">
+      <a href="" class="button colour raised roundedCorners boldText centreContent"
+         onclick="">DOWNLOAD FILE</a>
+  </div></div>
+</div>
+
+<!-- PREVIOUS PAGE BUTTON -->
+<div class="splitWidthContainer">
+              <div class="left">
+                <a href="{{ url_for('analysis_viewer') }}" class="button colour raised roundedCorners backButton"><i class="fa-solid fa-caret-left"></i> Back</a>
+
+
+              </div>
+              <div class="right" style="text-align:right">
+              </div>
+            </div>
+{% endblock %}
