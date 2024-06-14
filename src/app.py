@@ -60,6 +60,12 @@ def impairment_options():
     return render_template('impairment_options.html', pageName=page_name)
 
 
+@app.route('/output')
+def output():
+    page_name = 8
+    return render_template('outputPage.html', pageName=page_name)
+
+
 @app.route('/sample_conditional')
 def sample_conditional():
     return render_template('sample_conditional.html', config=input_reader.get_config())
