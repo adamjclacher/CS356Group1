@@ -14,11 +14,6 @@ def root():
     page_name = 1
     return render_template('index.html', pageName=page_name)
 
-@app.route('/analysis_viewer')
-def analysis_viewer():
-    page_name = 6
-    return render_template('analysis.html', page_name=page_name)
-
 @app.route('/encoder_viewer')
 def encoder_viewer():
     page_name = 2
@@ -47,7 +42,6 @@ def layer_config():
     page_name = 5
     return render_template('layerConfig.html', pageName=page_name)
 
-
 @app.route('/network')
 def network():
     page_name = 6
@@ -59,10 +53,15 @@ def impairment_options():
     page_name = 7
     return render_template('impairment_options.html', pageName=page_name)
 
+@app.route('/analysis_viewer')
+def analysis_viewer():
+    page_name = 8
+    return render_template('analysis.html', pageName=page_name)
+
 
 @app.route('/output')
 def output():
-    page_name = 8
+    page_name = 9
     return render_template('outputPage.html', pageName=page_name)
 
 
