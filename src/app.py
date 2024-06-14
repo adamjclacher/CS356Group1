@@ -14,33 +14,30 @@ def root():
     page_name = 1
     return render_template('index.html', pageName=page_name)
 
-@app.route('/encoder_viewer')
+
+@app.route('/encoder-viewer')
 def encoder_viewer():
     page_name = 2
     return render_template('encoding.html', pageName=page_name)
 
 
-@app.route('/scrum45')
-def scrum45():
-    return render_template('scrum45.html')
-
-
 @app.route('/video-options')
 def video_options():
     page_name = 3
-    return render_template('videoOptions.html', pageName=page_name)
+    return render_template('video_options.html', pageName=page_name)
 
 
 @app.route('/layer-options')
 def layer_options():
     page_name = 4
-    return render_template('layerOptions.html', pageName=page_name)
+    return render_template('layer_options.html', pageName=page_name)
 
 
 @app.route('/layer-config')
 def layer_config():
     page_name = 5
-    return render_template('layerConfig.html', pageName=page_name)
+    return render_template('layer_config.html', pageName=page_name)
+
 
 @app.route('/network')
 def network():
@@ -53,7 +50,8 @@ def impairment_options():
     page_name = 7
     return render_template('impairment_options.html', pageName=page_name)
 
-@app.route('/analysis_viewer')
+
+@app.route('/analysis-viewer')
 def analysis_viewer():
     page_name = 8
     return render_template('analysis.html', pageName=page_name)
@@ -62,10 +60,10 @@ def analysis_viewer():
 @app.route('/output')
 def output():
     page_name = 9
-    return render_template('outputPage.html', pageName=page_name)
+    return render_template('output_page.html', pageName=page_name)
 
 
-@app.route('/sample_conditional')
+@app.route('/sample-conditional')
 def sample_conditional():
     return render_template('sample_conditional.html', config=input_reader.get_config())
 
@@ -77,15 +75,15 @@ def get_config():
     response_code = 200
 
     if not section_parameter:
-        output = input_reader.get_config()
+        api_output = input_reader.get_config()
     else:
         try:
-            output = input_reader.get_config_section(section_parameter)
+            api_output = input_reader.get_config_section(section_parameter)
         except KeyError:
-            output = {'Error': 'An invalid section parameter was passed to this endpoint.'}
+            api_output = {'Error': 'An invalid section parameter was passed to this endpoint.'}
             response_code = 400
 
-    return jsonify(output), response_code
+    return jsonify(api_output), response_code
 
 
 def main():
