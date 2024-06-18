@@ -9,7 +9,6 @@ from os.path import isfile
 class ConfigAPI:
     mockResponses = False
     mockFileLocation = None
-    configApiResponse = None
 
     inputReader = None
 
