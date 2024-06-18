@@ -1,12 +1,20 @@
 # Basic Flask Server
 # FOR CS356 GROUP PROJECT - GROUP ONE
 
+from config_api import ConfigAPI
+from datetime import datetime
 from flask import Flask, render_template, jsonify, request
-from input_reader import InputReader
 
+# APPLICATION SETTINGS
+SERVER_PORT = 8080
+CONFIG_API_MOCK = True
+CONFIG_API_MOCK_FILE = 'resources/InputConfigJSONTemplate.json'
+FLASK_DEBUG = True
+FLASK_RELOADER = False
+
+# GLOBAL VARIABLES
 app = Flask(__name__, template_folder='templates/', static_url_path='/static')
-
-input_reader = 0
+config_api = 0
 
 
 @app.route('/')
@@ -65,37 +73,34 @@ def output():
 
 @app.route('/sample-conditional')
 def sample_conditional():
-    return render_template('sample_conditional.html', config=input_reader.get_config())
+    return render_template('sample_conditional.html', config=config_api.send_request(None))
 
 
 @app.route('/api/config', methods=['GET'])
 def get_config():
-    section_parameter = request.args.get('section')
-
-    response_code = 200
-
-    if not section_parameter:
-        api_output = input_reader.get_config()
-    else:
-        try:
-            api_output = input_reader.get_config_section(section_parameter)
-        except KeyError:
-            api_output = {'Error': 'An invalid section parameter was passed to this endpoint.'}
-            response_code = 400
-
-    return jsonify(api_output), response_code
+    return jsonify(config_api.send_request(None)), 200
 
 
 def main():
-    global input_reader
+    print('[*] 1KLIK PROJECT - USER INTERFACE')
+    print('[*] By Abby, Adam, Aidan, James, and Jamie')
+    print(f'[LOG] {datetime.now()} Initialising Server...')
+    print(f'[LOG] {datetime.now()} CONFIG API SETTINGS: Mock Requests({CONFIG_API_MOCK}), '
+          f'Mock File(\'{CONFIG_API_MOCK_FILE}\')')
+
+    # We want to update the global variable
+    global config_api
 
     try:
-        input_reader = InputReader('resources/InputConfigJSONTemplate.json')
-    except ValueError as ve:
-        print(f'InputReader failed to read from the given JSON: {ve}')
+        # Set up our ConfigAPI handler
+        config_api = ConfigAPI(CONFIG_API_MOCK, CONFIG_API_MOCK_FILE)
+    except Exception as e:
+        print(f'Failure initialising Config API: {e}')
 
-    print('[LOG] Flask listening on port 8080.')
-    app.run(debug=True, use_reloader=False, port=8080)
+    # Start the Flask server
+    print(f'[LOG] {datetime.now()} FLASK SETTINGS: Debug({FLASK_DEBUG}), Reloader({FLASK_RELOADER})')
+    print(f'[LOG] {datetime.now()} Flask server listening on port {SERVER_PORT}.')
+    app.run(debug=FLASK_DEBUG, use_reloader=FLASK_RELOADER, port=SERVER_PORT)
 
 
 if __name__ == '__main__':
