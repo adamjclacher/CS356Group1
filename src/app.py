@@ -26,7 +26,7 @@ def root():
 @app.route('/encoder-viewer')
 def encoder_viewer():
     page_name = 2
-    return render_template('encoding.html', pageName=page_name)
+    return render_template('encoding.html', pageName=page_name, config=config_api.send_request(None))
 
 
 @app.route('/video-options')
@@ -86,7 +86,7 @@ def main():
     print('[*] By Abby, Adam, Aidan, James, and Jamie')
     print(f'[LOG] {datetime.now()} Initialising Server...')
     print(f'[LOG] {datetime.now()} CONFIG API SETTINGS: Mock Requests({CONFIG_API_MOCK}), '
-          f'Mock File(\'{CONFIG_API_MOCK_FILE}\')')
+         f'Mock File(\'{CONFIG_API_MOCK_FILE}\')')
 
     # We want to update the global variable
     global config_api
@@ -96,6 +96,7 @@ def main():
         config_api = ConfigAPI(CONFIG_API_MOCK, CONFIG_API_MOCK_FILE)
     except Exception as e:
         print(f'Failure initialising Config API: {e}')
+
 
     # Start the Flask server
     print(f'[LOG] {datetime.now()} FLASK SETTINGS: Debug({FLASK_DEBUG}), Reloader({FLASK_RELOADER})')

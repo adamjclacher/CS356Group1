@@ -12,32 +12,27 @@
                           <h3 class="colour">ENCODERS</h3>
                           <br>
                           <div class="section lowered" style="min-height:150px;">
-                            <label><input type="radio" name="encoder" value="standard"> STANDARD ENCODER</label>
+                            {% for encoder in config['Encoder'][0]['encoder_types'] %}
+                            <label><input onclick="selectedEncoder('{{ encoder.id }}', {{encoder.active_codecs}})" type="radio" name="encoder" value="{{ encoder.name }}"> {{ encoder.name }}</label>
                             <br>
-                            <label><input type="radio" name="encoder" value="scalable"> SCALABLE ENCODER</label>
-                            <br>
-                            <label><input type="radio" name="encoder" value="3d"> 3D/MULTIVIEW ENCODER</label>
+                            {% endfor %}
                           </div>
                       <br><br><br>
-                        <h3 class="colour">ENCODER MODULES</h3>
+                        <h3 class="colour">ENCODER MODES</h3>
                         <br>
                         <div class="section lowered" style="min-height:200px;">
-                        <label><input type="radio" name="encoder_modes" value="random"> RANDOM ACCESS</label><br>
-                        <label><input type="radio" name="encoder_modes" value="low_delay"> LOW DELAY</label><br>
-                        <label><input type="radio" name="encoder_modes" value="intra_only"> INTRA ONLY</label>
+                        {% for encoder_mode in config['Encoder'][2]['encoder_modes'] %}
+                        <label><input type="radio" name="encoder_modes" value="{{encoder_mode.name}}"> {{encoder_mode.name}}</label><br>
+                        {% endfor %}
                       </div>
                   </div>
                   <div class="right">
                         <h3 class="colour">CODECS</h3>
                         <br>
                         <div class="section lowered" style="min-height:150px;">
-                          <label><input type="radio" name="codec" value="codec1"> AVC (H.264)</label><br>
-                          <label><input type="radio" name="codec" value="codec2"> SVC 19 (H.264)</label>
-                          <br>
-                          <label><input type="radio" name="codec" value="codec3"> HEVC (H.265)</label><br>
-                          <label><input type="radio" name="codec" value="codec4"> SHVC (H.265)</label>
-                          <br>
-                          <label><input type="radio" name="codec" value="codec5"> JEM v6 (Experimental)</label>
+                          {% for codec in config['Encoder'][1]['codecs'] %}
+                          <label ><input disabled id="codec_{{codec.id}}" type="radio" name="codec" value="{{codec.name}}"> {{codec.name}}</label><br>
+                          {% endfor %}
                         </div>
                     <br><br><br>
                     <div class="splitWidthContainer">
@@ -86,4 +81,33 @@
                 <a href="{{ url_for('video_options') }}" class="button colour raised roundedCorners nextButton">Next <i class="fa-solid fa-caret-right"></i></a>
               </div>
             </div>
+
+            <script>
+              function disableCodecInputs() {
+                  // Get all input elements on the page
+                  const inputs = document.getElementsByTagName('input');
+
+                  // Loop through each input element
+                  for (let i = 0; i < inputs.length; i++) {
+                      const input = inputs[i];
+
+                      // Check if the input element's ID includes 'codec_'
+                      if (input.id.includes('codec_')) {
+                          // Set the input element's disabled property to true
+                          input.disabled = true;
+                          input.checked = false;
+                      }
+                  }
+              }
+
+              // Function to handle the radio button selection
+              function selectedEncoder(encoder_id, active_codecs) {
+                disableCodecInputs();
+                  for (const codec of active_codecs) {
+                    var codecElement = document.getElementById("codec_" + codec);
+                    codecElement.disabled = false;
+                  }
+              }
+            </script>
+
 {% endblock %}
