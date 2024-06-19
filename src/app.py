@@ -15,12 +15,14 @@ FLASK_RELOADER = False
 # GLOBAL VARIABLES
 app = Flask(__name__, template_folder='templates/', static_url_path='/static')
 config_api = 0
+config_api_response = None
 
 
 @app.route('/')
 def root():
     page_name = 1
-    return render_template('index.html', pageName=page_name)
+    return render_template('index.html', pageName=page_name, config=config_api_response,
+                           refresh_config_api_response=refresh_config_api_response)
 
 
 @app.route('/encoder-viewer')
@@ -73,12 +75,24 @@ def output():
 
 @app.route('/sample-conditional')
 def sample_conditional():
-    return render_template('sample_conditional.html', config=config_api.send_request(None))
+    return render_template('sample_conditional.html', config=config_api_response)
 
 
 @app.route('/api/config', methods=['GET'])
 def get_config():
     return jsonify(config_api.send_request(None)), 200
+
+
+def refresh_config_api_response(endpoint):
+    global config_api_response
+
+    try:
+        config_api_response = config_api.send_request(endpoint, True)
+        print(f'[LOG] {datetime.now()} Refreshed Config API Response cache.')
+    except ValueError as e:
+        print(f'[LOG] {datetime.now()} Failed to refresh Config API response cache: {e}')
+    except IOError as e:
+        print(f'[LOG] {datetime.now()} Failed to refresh Config API response cache: {e}')
 
 
 def main():
@@ -96,6 +110,11 @@ def main():
         config_api = ConfigAPI(CONFIG_API_MOCK, CONFIG_API_MOCK_FILE)
     except Exception as e:
         print(f'Failure initialising Config API: {e}')
+
+    if CONFIG_API_MOCK:
+        refresh_config_api_response(None)
+    else:
+        refresh_config_api_response('active_configurations')
 
     # Start the Flask server
     print(f'[LOG] {datetime.now()} FLASK SETTINGS: Debug({FLASK_DEBUG}), Reloader({FLASK_RELOADER})')
