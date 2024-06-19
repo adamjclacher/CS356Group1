@@ -1,3 +1,4 @@
+import json
 import requests
 
 from datetime import datetime
@@ -5,19 +6,22 @@ from input_reader import InputReader
 from os import access, R_OK
 from os.path import isfile
 
+# Config API Settings
+
+CONFIG_API_URL = '127.0.0.1'
+CONFIG_API_PORT = '8080'
+CONFIG_API_ENDPOINTS = [
+    'all_configurations',
+    'active_configurations'
+]
+
 
 class ConfigAPI:
     mockResponses = False
     mockFileLocation = None
+    cachedResponse = None
 
     inputReader = None
-
-    CONFIG_API_URL = '127.0.0.1'
-    CONFIG_API_PORT = '8080'
-    CONFIG_API_ENDPOINTS = [
-        'all_configurations',
-        'active_configurations'
-    ]
 
     def __init__(self, mock_responses=False, mock_file_location=None):
         print(f'[LOG] {datetime.now()} Constructing ConfigAPI...')
@@ -46,16 +50,24 @@ class ConfigAPI:
 
         print(f'[LOG] {datetime.now()} ConfigAPI Constructed')
 
-    def send_request(self, endpoint):
+    def send_request(self, endpoint, bypass_cache=False):
+        # Are we mocking responses?
         if self.mockResponses:
             return self.inputReader.get_config()
 
-        if endpoint not in self.CONFIG_API_ENDPOINTS:
+        # Check for valid endpoint
+        if endpoint not in CONFIG_API_ENDPOINTS:
             raise ValueError('Unacceptable Config API Endpoint.')
 
+        # Check if we have a cached response
+        if not bypass_cache and self.cachedResponse:
+            return self.cachedResponse
+
         try:
-            api_request = requests.get(f'{self.CONFIG_API_URL}:{self.CONFIG_API_PORT}/{endpoint}')
+            self.cachedResponse = json.loads(
+                requests.get(f'http://{CONFIG_API_URL}:{CONFIG_API_PORT}/{endpoint}')
+                .text)
         except requests.exceptions.RequestException as e:
             raise IOError(f'Could not send GET request to given endpoint: {e}')
 
-        return api_request.content
+        return self.cachedResponse
