@@ -28,7 +28,7 @@ def root():
 @app.route('/encoder-viewer')
 def encoder_viewer():
     page_name = 2
-    return render_template('encoding.html', pageName=page_name)
+    return render_template('encoding.html', pageName=page_name, config=config_api_response)
 
 
 @app.route('/video-options')
