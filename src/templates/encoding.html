@@ -31,7 +31,7 @@
                         <br>
                         <div class="section lowered" style="min-height:150px;">
                           {% for codec in config['Encoder'][1]['codecs'] %}
-                          <label ><input onclick="selectedCodec('{{ codec.id }}', {{codec.active_encoder_modes}}, {{codec.max_layers}})" disabled id="codec_{{codec.id}}" type="radio" name="codec" value="{{codec.name}}"> {{codec.name}}</label><br>
+                          <label ><input onclick="selectedCodec('{{ codec.id }}', {{codec.active_encoder_modes}}, {{codec.max_layers}}, '{{codec.active_scalability}}')" disabled id="codec_{{codec.id}}" type="radio" name="codec" value="{{codec.name}}"> {{codec.name}}</label><br>
                           {% endfor %}
                         </div>
                     <br><br><br>
@@ -124,7 +124,7 @@
               }
 
               // Function to handle the codecs radio button selection
-              function selectedCodec(codec_id, encoder_modes, max_layers) {
+              function selectedCodec(codec_id, encoder_modes, max_layers, active_scalability) {
                   disableInputs('encoder_mode_');
                   disableInputs('layer_');
                   for (const encoder_mode of encoder_modes) {
