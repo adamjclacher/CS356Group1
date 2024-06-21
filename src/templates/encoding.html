@@ -12,60 +12,62 @@
                           <h3 class="colour">ENCODERS</h3>
                           <br>
                           <div class="section lowered" style="min-height:150px;">
-                            <label><input type="radio" name="encoder" value="standard"> STANDARD ENCODER</label>
+                            {% for encoder in config['Encoder'][0]['encoder_types'] %}
+                            <label><input onclick="selectedEncoder('{{ encoder.id }}', {{encoder.active_codecs}})" type="radio" name="encoder" value="{{ encoder.name }}"> {{ encoder.name }}</label>
                             <br>
-                            <label><input type="radio" name="encoder" value="scalable"> SCALABLE ENCODER</label>
-                            <br>
-                            <label><input type="radio" name="encoder" value="3d"> 3D/MULTIVIEW ENCODER</label>
+                            {% endfor %}
                           </div>
                       <br><br><br>
-                        <h3 class="colour">ENCODER MODULES</h3>
+                        <h3 class="colour">ENCODER MODES</h3>
                         <br>
                         <div class="section lowered" style="min-height:200px;">
-                        <label><input type="radio" name="encoder_modes" value="random"> RANDOM ACCESS</label><br>
-                        <label><input type="radio" name="encoder_modes" value="low_delay"> LOW DELAY</label><br>
-                        <label><input type="radio" name="encoder_modes" value="intra_only"> INTRA ONLY</label>
+                        {% for encoder_mode in config['Encoder'][2]['encoder_modes'] %}
+                        <label><input disabled id="encoder_mode_{{encoder_mode.id}}" type="radio" name="encoder_modes" value="{{encoder_mode.name}}"> {{encoder_mode.name}}</label><br>
+                        {% endfor %}
                       </div>
                   </div>
                   <div class="right">
                         <h3 class="colour">CODECS</h3>
                         <br>
                         <div class="section lowered" style="min-height:150px;">
-                          <label><input type="radio" name="codec" value="codec1"> AVC (H.264)</label><br>
-                          <label><input type="radio" name="codec" value="codec2"> SVC 19 (H.264)</label>
-                          <br>
-                          <label><input type="radio" name="codec" value="codec3"> HEVC (H.265)</label><br>
-                          <label><input type="radio" name="codec" value="codec4"> SHVC (H.265)</label>
-                          <br>
-                          <label><input type="radio" name="codec" value="codec5"> JEM v6 (Experimental)</label>
+                          {% for codec in config['Encoder'][1]['codecs'] %}
+                          <label ><input onclick="selectedCodec('{{ codec.id }}', {{codec.active_encoder_modes}}, {{codec.max_layers}}, '{{codec.active_scalability}}')" disabled id="codec_{{codec.id}}" type="radio" name="codec" value="{{codec.name}}"> {{codec.name}}</label><br>
+                          {% endfor %}
                         </div>
                     <br><br><br>
                     <div class="splitWidthContainer">
                       <div class="left" style="padding:0px;padding-right:15px;">
                             <h3 class="colour">NUMBER OF LAYERS</h3>
                             <br>
-                            <div class= "section lowered" style="min-height:200px;">
-                              <label><input type="radio" name="layers" value="1"> 1</label>
+                            <div class= "section lowered" style="min-height:200px;max-height:200px;overflow-y:scroll">
+                              <label><input disabled id="layer_1" type="radio" name="layers" value="1"> 1</label>
                               <br>
-                              <label><input type="radio" name="layers" value="2"> 2</label>
+                              <label><input disabled id="layer_2" type="radio" name="layers" value="2"> 2</label>
                               <br>
-                              <label><input type="radio" name="layers" value="3"> 3</label>
+                              <label><input disabled id="layer_3" type="radio" name="layers" value="3"> 3</label>
                               <br>
-                              <label><input type="radio" name="layers" value="4"> 4</label>
+                              <label><input disabled id="layer_4" type="radio" name="layers" value="4"> 4</label>
                               <br>
-                              <label><input type="radio" name="layers" value="5"> 5</label>
+                              <label><input disabled id="layer_5" type="radio" name="layers" value="5"> 5</label>
                               <br>
-                              <label><input type="radio" name="layers" value="6"> 6</label>
+                              <label><input disabled id="layer_6" type="radio" name="layers" value="6"> 6</label>
                               <br>
-                              <label><input type="radio" name="layers" value="7"> 7</label>
+                              <label><input disabled id="layer_7" type="radio" name="layers" value="7"> 7</label>
+                              <br>
+                              <label><input disabled id="layer_8" type="radio" name="layers" value="8"> 8</label>
+                              <br>
+                              <label><input disabled id="layer_9" type="radio" name="layers" value="9"> 9</label>
+                              <br>
+                              <label><input disabled id="layer_10" type="radio" name="layers" value="10"> 10</label>
                             </div>
                       </div>
                       <div class="right" style="padding:0px;">
                             <h3 class="colour">SCALABILITY</h3>
                             <br>
                             <div class="section lowered" style="min-height:200px;">
-                              <label><input type="radio" name="scalability" value="yes">YES</label><br>
-                              <label><input type="radio" name="scalability" value="no">NO</label>
+                              {% for scale in config['Encoder'][6]['scalability'] %}
+                                <label><input onclick="" disabled type="radio" name="encoder" value="{{ scale.name }}"> {{ scale.name }}</label><br>
+                              {% endfor %}
                             </div>
                       </div>
                     </div>
@@ -83,7 +85,81 @@
 
               </div>
               <div class="right" style="text-align:right">
-                <a href="{{ url_for('video_options') }}" class="button colour raised roundedCorners nextButton">Next <i class="fa-solid fa-caret-right"></i></a>
+                <a href="{{ url_for('video_options') }}" class="button colour raised roundedCorners nextButton">View Selection</a><a href="{{ url_for('video_options') }}" class="button colour raised roundedCorners nextButton">Next <i class="fa-solid fa-caret-right"></i></a>
               </div>
             </div>
+
+            <!-- LOGIC FOR UNLOCKING SELECTION OPTIONS !-->
+
+            <script>
+              // For disabling inputs when another selection is made
+              // e.g a user selects another encoder, which means the
+              // codecs need to be all quickly disabled and unchecked
+              function disableInputs(input_type) {
+                  // Get all input elements on the page
+                  const inputs = document.getElementsByTagName('input');
+
+                  // Loop through each input element
+                  for (let i = 0; i < inputs.length; i++) {
+                      const input = inputs[i];
+
+                      // Check if the input element's ID includes input type passed in, e.g 'codec_'
+                      if (input.id.includes(input_type)) {
+                          // Set the input element's disabled property to true
+                          input.disabled = true;
+                          input.checked = false;
+                      }
+                  }
+              }
+
+              // Function to handle the encoder radio button selection
+              function selectedEncoder(encoder_id, active_codecs) {
+                  disableInputs('codec_');
+                  disableInputs('encoder_mode_');
+                  disableInputs('layer_');
+                  for (const codec of active_codecs) {
+                    var codecElement = document.getElementById("codec_" + codec);
+                    codecElement.disabled = false;
+                  }
+              }
+
+              // Function to handle the codecs radio button selection
+              function selectedCodec(codec_id, encoder_modes, max_layers, active_scalability) {
+                  disableInputs('encoder_mode_');
+                  disableInputs('layer_');
+                  for (const encoder_mode of encoder_modes) {
+                    console.log(encoder_mode);
+                    if (document.getElementById("encoder_mode_" + encoder_mode)) {
+                      var encoderModeElement = document.getElementById("encoder_mode_" + encoder_mode);
+                      encoderModeElement.disabled = false;
+                    }
+
+                  }
+                  enableLayers(max_layers);
+              }
+
+              function enableLayers(max_layers) {
+                // Ensure max_layers is within the valid range of 1-10
+                if (max_layers < 1 || max_layers > 10) {
+                    console.error('max_layers should be between 1 and 10');
+                    return;
+                }
+
+                // Iterate through each layer from 1 to max_layers
+                for (let i = 1; i <= max_layers; i++) {
+                    // Construct the element ID
+                    const elementId = `layer_${i}`;
+                    // Get the element by ID
+                    const layerElement = document.getElementById(elementId);
+                    // Check if the element exists and set disabled to false
+                    console.log("testing")
+                    if (layerElement) {
+                        layerElement.disabled = false;
+                    } else {
+                        console.warn(`Element with ID ${elementId} not found`);
+                    }
+                  }
+                }
+            </script>
+
 {% endblock %}
