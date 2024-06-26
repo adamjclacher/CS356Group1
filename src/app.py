@@ -50,13 +50,13 @@ def layer_config():
 @app.route('/network')
 def network():
     page_name = 6
-    return render_template('network.html', pageName=page_name)
+    return render_template('network.html', pageName=page_name, config=config_api.send_request(None))
 
 
 @app.route('/impairment-options')
 def impairment_options():
     page_name = 7
-    return render_template('impairment_options.html', pageName=page_name)
+    return render_template('impairment_options.html', pageName=page_name, config=config_api.send_request(None))
 
 
 @app.route('/analysis-viewer')
