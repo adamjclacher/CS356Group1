@@ -64,7 +64,7 @@ def impairment_options():
 @app.route('/analysis-viewer')
 def analysis_viewer():
     page_name = 8
-    return render_template('analysis.html', pageName=page_name)
+    return render_template('analysis.html', pageName=page_name, config=config_api_response)
 
 
 @app.route('/output')
