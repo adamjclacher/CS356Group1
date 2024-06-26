@@ -72,6 +72,13 @@ function openCity(evt, cityName) {
 //    jsonData.textContent = JSON.stringify(data, null, 2);  // Display the JSON data as a pretty-printed string
 //}
 
+function sendFile(){
+    fetch('/upload',{method: 'POST',})
+        .then(response => response.json())
+        .then(data =>{alert(data.message);})
+        .catch(error => {console.error('Error:',error);});
+}
+
 function toggleDivById(divId) {
         // Get the div element by its ID
         var div = document.getElementById(divId);

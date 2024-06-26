@@ -1,9 +1,14 @@
 # Basic Flask Server
 # FOR CS356 GROUP PROJECT - GROUP ONE
+import json
+import os
+import random
+import string
+import requests
 
 from config_api import ConfigAPI
 from datetime import datetime
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, send_from_directory
 
 # APPLICATION SETTINGS
 SERVER_PORT = 8080
@@ -11,7 +16,7 @@ CONFIG_API_MOCK = True
 CONFIG_API_MOCK_FILE = 'resources/InputConfigJSONTemplate.json'
 FLASK_DEBUG = True
 FLASK_RELOADER = False
-
+OUTPUT_FILE_DIR = 'resources/output.json'
 # GLOBAL VARIABLES
 app = Flask(__name__, template_folder='templates/', static_url_path='/static')
 config_api = 0
@@ -81,6 +86,46 @@ def sample_conditional():
 @app.route('/api/config', methods=['GET'])
 def get_config():
     return jsonify(config_api.send_request(None)), 200
+
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    try:
+        file_path = os.path.join(OUTPUT_FILE_DIR)
+
+        with open(file_path, 'rb') as f:
+            files1 = json.load(f)
+            url = 'http://127.0.0.1:8082/'  # need hand with this
+
+            response = requests.post(url, json=files1)
+
+        if response.status_code == 200:
+            return jsonify(message="File successfully sent"), 200
+        else:
+            return jsonify(message="File failed, status code: {response.status_code}"), 400
+    except Exception as e:
+        return jsonify(message=str(e)), 500
+
+
+def filename_fixer(path):  # doing this as with mock files the experiment team doesn't want duplicates
+    with open(path, 'r') as file:
+        json_data = json.load(file)
+
+        # Extract the current project name
+    current_name = json_data["Project"]["name"]
+
+    # Generate 2 random characters
+    random_characters = ''.join(random.choices(string.ascii_letters + string.digits, k=2))
+
+    # Create the new name by appending the random characters
+    new_name = current_name + random_characters
+
+    # Update the JSON data with the new name
+    json_data["Project"]["name"] = new_name
+
+    # Write the updated JSON data back to the file
+    with open(path, 'w') as file:
+        json.dump(json_data, file, indent=4)
 
 
 def refresh_config_api_response(endpoint):
