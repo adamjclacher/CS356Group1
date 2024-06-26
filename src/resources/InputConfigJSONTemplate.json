@@ -106,6 +106,19 @@
 						"description": "description 1",
 						"url_image": "1.jpg"
 					}
+				},
+				{
+					"id": 0,
+					"name": "Video 2",
+					"code": "001",
+					"times": [ "000" ],
+					"spatials": [ "000", "001" ],
+					"temporals": [ "001", "002" ],
+					"depths": [ "000" ],
+					"metadata": {
+						"description": "description 1",
+						"url_image": "1.jpg"
+					}
 				}
 			]
 		},

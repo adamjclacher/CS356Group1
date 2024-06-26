@@ -34,19 +34,19 @@ def encoder_viewer():
 @app.route('/video-options')
 def video_options():
     page_name = 3
-    return render_template('video_options.html', pageName=page_name)
+    return render_template('video_options.html', pageName=page_name, config=config_api_response)
 
 
 @app.route('/layer-options')
 def layer_options():
     page_name = 4
-    return render_template('layer_options.html', pageName=page_name)
+    return render_template('layer_options.html', pageName=page_name, config=config_api_response)
 
 
 @app.route('/layer-config')
 def layer_config():
     page_name = 5
-    return render_template('layer_config.html', pageName=page_name)
+    return render_template('layer_config.html', pageName=page_name, config=config_api_response)
 
 
 @app.route('/network')
@@ -81,7 +81,6 @@ def sample_conditional():
 @app.route('/api/config', methods=['GET'])
 def get_config():
     return jsonify(config_api.send_request(None)), 200
-
 
 def refresh_config_api_response(endpoint):
     global config_api_response
