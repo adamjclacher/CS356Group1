@@ -58,8 +58,7 @@ def encoder_viewer():
     try:
         return render_template('encoding.html', pageName=page_name, config=config_api_response)
     except Exception as e:
-        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'encoder-viewer\' page: '
-              + str(e))
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'encoder-viewer\' page: {e}')
         abort(500)
 
 
@@ -70,8 +69,7 @@ def video_options():
     try:
         return render_template('video_options.html', pageName=page_name, config=config_api_response)
     except Exception as e:
-        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'video-options\' page: '
-              + str(e))
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'video-options\' page: {e}')
         abort(500)
 
 
@@ -82,8 +80,7 @@ def layer_options():
     try:
         return render_template('layer_options.html', pageName=page_name, config=config_api_response)
     except Exception as e:
-        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'layer-options\' page: '
-              + str(e))
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'layer-options\' page: {e}')
         abort(500)
 
 
@@ -94,8 +91,7 @@ def layer_config():
     try:
         return render_template('layer_config.html', pageName=page_name, config=config_api_response)
     except Exception as e:
-        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'layer-config\' page: '
-              + str(e))
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'layer-config\' page: {e}')
         abort(500)
 
 
@@ -106,8 +102,7 @@ def network():
     try:
         return render_template('network.html', pageName=page_name, config=config_api_response)
     except Exception as e:
-        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'network\' page: '
-              + str(e))
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'network\' page: {e}')
         abort(500)
 
 
@@ -119,8 +114,7 @@ def impairment_options():
         return render_template('impairment_options.html', pageName=page_name,
                                config=config_api_response)
     except Exception as e:
-        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'impairment-options\' page: '
-              + str(e))
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'impairment-options\' page: {e}')
         abort(500)
 
 
@@ -131,8 +125,7 @@ def analysis_viewer():
     try:
         return render_template('analysis.html', pageName=page_name, config=config_api_response)
     except Exception as e:
-        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'analysis-viewer\' page: '
-              + str(e))
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'analysis-viewer\' page: {e}')
         abort(500)
 
 
@@ -143,8 +136,7 @@ def output():
     try:
         return render_template('output_page.html', pageName=page_name)
     except Exception as e:
-        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'output\' page: '
-              + str(e))
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'output\' page: {e}')
         abort(500)
 
 
