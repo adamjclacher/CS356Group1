@@ -18,7 +18,7 @@ from flask import Flask, render_template, jsonify, abort
 
 # APPLICATION SETTINGS
 SERVER_PORT = 8081                                                     # The port for running the UI SERVER
-FLASK_DEBUG = False                                                     # Use Flask debugger mode
+FLASK_DEBUG = False                                                    # Use Flask debugger mode
 FLASK_RELOADER = False                                                 # Use Flask reloader
 
 # CONFIG API SETTINGS
