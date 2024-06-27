@@ -11,40 +11,30 @@
                 <!-- Layer 0 !-->
                 <div class="leftThird" style="text-align:center">
                   <h2 class="colour">PACKET LOSS</h2><br>
-                  <div class="section lowered" style="text-align:center;min-height:200px;">
+                  <div class="section lowered" style="text-align:center;height:200px;overflow-y:auto">
                     <div style="text-align:left;display:inline-block;">
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="packet_loss" value="0"> 0%
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="packet_loss" value="1"> 1%
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="packet_loss" value="3"> 3%
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="packet_loss" value="5"> 5%
-                      </label>
+                      {% for impairmentValue in config['Network'][2]['impairment values'] %}
+                        {% if impairmentValue.id in config['Network'][1]['impairments'][0]['active_impairment_values'] %}
+                          <label style="padding:15px;">
+                            <input onclick="checkboxClicked('packet_loss_{{impairmentValue.id}}')" id='packet_loss_{{impairmentValue.id}}' type="checkbox" name="packet_loss" value="{{impairmentValue.value}}"> {{impairmentValue.name}}
+                          </label><br><br>
+                        {% endif %}
+                      {% endfor %}
                     </div>
 
                   </div>
                   <br>
 
                   <h2 class="colour">JITTER (%)</h2><br>
-                  <div class="section lowered" style="text-align:center;min-height:200px;">
+                  <div class="section lowered" style="text-align:center;height:200px;overflow-y:auto">
                     <div style="text-align:left;display:inline-block;">
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="jitter" value="0"> 0%
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="jitter" value="1"> 1%
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="jitter" value="3"> 3%
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="jitter" value="5"> 5%
-                      </label>
+                      {% for impairmentValue in config['Network'][2]['impairment values'] %}
+                        {% if impairmentValue.id in config['Network'][1]['impairments'][3]['active_impairment_values'] %}
+                          <label style="padding:15px;">
+                            <input onclick="checkboxClicked('jitter_{{impairmentValue.id}}')" id='jitter_{{impairmentValue.id}}' type="checkbox" name="packet_loss" value="{{impairmentValue.value}}"> {{impairmentValue.name}}
+                          </label><br><br>
+                        {% endif %}
+                      {% endfor %}
                     </div>
 
                   </div>
@@ -54,38 +44,28 @@
                 <!-- Layer 1 !-->
                 <div class="centreThird" style="text-align:center">
                   <h2 class="colour">THROTTLE BANDWIDTH</h2><br>
-                  <div class="section lowered" style="text-align:center;min-height:200px;">
+                  <div class="section lowered" style="text-align:center;height:200px;overflow-y:auto">
                     <div style="text-align:left;display:inline-block;">
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="throttle_bandwidth" value="0"> 0% reduction
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="throttle_bandwidth" value="1"> 1% reduction
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="throttle_bandwidth" value="3"> 3% reduction
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="throttle_bandwidth" value="5"> 5% reduction
-                      </label>
+                      {% for impairmentValue in config['Network'][2]['impairment values'] %}
+                        {% if impairmentValue.id in config['Network'][1]['impairments'][2]['active_impairment_values'] %}
+                          <label style="padding:15px;">
+                            <input onclick="checkboxClicked('throttle_bandwidth_{{impairmentValue.id}}')" id='throttle_bandwidth_{{impairmentValue.id}}' type="checkbox" name="packet_loss" value="{{impairmentValue.value}}"> {{impairmentValue.name}}
+                          </label><br><br>
+                        {% endif %}
+                      {% endfor %}
                     </div>
                   </div>
                   <br>
                   <h2 class="colour">END TO END DELAY (ms)</h2><br>
-                  <div class="section lowered" style="text-align:center;min-height:200px;">
+                  <div class="section lowered" style="text-align:center;height:200px;overflow-y:auto">
                     <div style="text-align:left;display:inline-block;">
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="end_to_end_delay" value="50"> 50ms
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="end_to_end_delay" value="100"> 100ms
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="end_to_end_delay" value="150"> 150ms
-                      </label><br><br>
-                      <label style="padding:15px;">
-                        <input type="checkbox" name="end_to_end_delay" value="300"> 300ms
-                      </label>
+                      {% for impairmentValue in config['Network'][2]['impairment values'] %}
+                        {% if impairmentValue.id in config['Network'][1]['impairments'][4]['active_impairment_values'] %}
+                          <label style="padding:15px;">
+                            <input onclick="checkboxClicked('end_to_end_delay_{{impairmentValue.id}}')" id='end_to_end_delay_{{impairmentValue.id}}' type="checkbox" name="packet_loss" value="{{impairmentValue.value}}"> {{impairmentValue.name}}
+                          </label><br><br>
+                        {% endif %}
+                      {% endfor %}
                     </div>
                   </div>
 
@@ -102,7 +82,7 @@
                       <br>
                       <br>
                       <br>
-                      <h2 class="colour">0/4</h2>
+                      <h2 id="selectedCount" style="display:inline-block;" class="colour">0</h2><h2 style="display:inline-block;" class="colour">/4</h2>
                     </div>
                   </div>
                 </div>
@@ -125,8 +105,28 @@
 
 
 
-<style>
+            <script>
+              let selectedCount = 0;
+              const maxSelection = 4;
 
+              function updateSelectedCount() {
+                  document.getElementById('selectedCount').textContent = selectedCount;
+              }
 
-</style>
+              function checkboxClicked(checkboxId) {
+                  const checkbox = document.getElementById(checkboxId);
+
+                  if (checkbox.checked) {
+                      if (selectedCount >= maxSelection) {
+                          checkbox.checked = false;
+                          alert('Maximum impairment options reached');
+                      } else {
+                          selectedCount++;
+                      }
+                  } else {
+                      selectedCount--;
+                  }
+                  updateSelectedCount();
+              }
+            </script>
 {% endblock %}

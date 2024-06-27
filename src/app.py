@@ -39,37 +39,37 @@ def encoder_viewer():
 @app.route('/video-options')
 def video_options():
     page_name = 3
-    return render_template('video_options.html', pageName=page_name)
+    return render_template('video_options.html', pageName=page_name, config=config_api_response)
 
 
 @app.route('/layer-options')
 def layer_options():
     page_name = 4
-    return render_template('layer_options.html', pageName=page_name)
+    return render_template('layer_options.html', pageName=page_name, config=config_api_response)
 
 
 @app.route('/layer-config')
 def layer_config():
     page_name = 5
-    return render_template('layer_config.html', pageName=page_name)
+    return render_template('layer_config.html', pageName=page_name, config=config_api_response)
 
 
 @app.route('/network')
 def network():
     page_name = 6
-    return render_template('network.html', pageName=page_name)
+    return render_template('network.html', pageName=page_name, config=config_api_response)
 
 
 @app.route('/impairment-options')
 def impairment_options():
     page_name = 7
-    return render_template('impairment_options.html', pageName=page_name)
+    return render_template('impairment_options.html', pageName=page_name, config=config_api_response)
 
 
 @app.route('/analysis-viewer')
 def analysis_viewer():
     page_name = 8
-    return render_template('analysis.html', pageName=page_name)
+    return render_template('analysis.html', pageName=page_name, config=config_api_response)
 
 
 @app.route('/output')
