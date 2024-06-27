@@ -1,40 +1,30 @@
+<!--
+# 1KLIK Project - User Interface
+# CS356 Group Project - Group One
+# Abby Boyle, Adam Clacher, Aidan Purdie, James Brown, and Jamie Connelly
+
+# video_options.html
+# The video options page
+-->
+
 {% extends "base.html" %}
 
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
-            <!-- This section requires:
-                - 3 buttons (create/edit/delete)
-                - Project name text box
-                - 3 radio buttons (encode only/live stream/stream & record) -->
+
             <div class="section raised centreContent mainContent" style="text-align:center">
               <br><br>
               <h1 class="colour boldText colour">VIDEO SELECTION</h1>
               <br><br>
                 <div class="section lowered roundedCorners" style="width:300px;display:inline-block">
-
-                  <form class="">
-                      <label class="centreContent">Video 1
-                          <input type="radio" name="radio" value="1">
-                          <span class=""></span>
-                      </label>
-                      <br><br>
-                      <label class="centreContent">Video 2
-                          <input type="radio" name="radio" value="2">
-                          <span class=""></span>
-                      </label>
-                      <br><br>
-                      <label class="centreContent">Video 3
-                          <input type="radio" name="radio" value="3">
-                          <span class=""></span>
-                      </label>
-                  </form>
-
+                  {% for video in config['Encoder'][3]['raw_files'] %}
+                         <label><input type="radio" name="encoder" value="{{ video.name }}"> {{ video.name }}</label><br>
+                         <br>
+                  {% endfor %}
                 </div>
             </div>
             <br>
-            <!-- THIS SECTION TO BE ADDED TO A BASE OR AS A COMPONENT !-->
-            <!-- NEXT PAGE BUTTON -->
             <div class="splitWidthContainer">
               <div class="left">
                 <a href="{{ url_for('encoder_viewer') }}" class="button colour raised roundedCorners backButton"><i class="fa-solid fa-caret-left"></i> Back</a>

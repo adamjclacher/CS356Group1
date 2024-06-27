@@ -1,3 +1,12 @@
+<!--
+# 1KLIK Project - User Interface
+# CS356 Group Project - Group One
+# Abby Boyle, Adam Clacher, Aidan Purdie, James Brown, and Jamie Connelly
+
+# layer_config.html
+# The layer config page
+-->
+
 {% extends "base.html" %}
 
 {% block title %}Home Page{% endblock %}
@@ -8,44 +17,62 @@
             <div class="section splitWidthContainer raised centreContent mainContent">
               <br>
                 <div class="left">
-                  <h2 class="right colour boldText">LAYER [x] CONFIG</h2>
+                  <h2 class="right colour boldText" id="layerconfignumber">LAYER [x] CONFIG</h2>
                   <br>
-                  <div id="layer" class="section lowered roundedCorners" style="height:300px;">
-                      <a class="button colour roundedCorners raised">Temporal</a>
+                  <div id="layer" class="section lowered roundedCorners" style="min-height:300px;">
+                      <button class="button colour roundedCorners raised" onclick="displayTemporal()">Temporal</button>
                       <br>
-                      <a class="button colour roundedCorners raised">Depth</a>
+                      <button class="button colour roundedCorners raised" onclick="displayDepth()">Depth</button>
                       <br>
-                      <a class="button colour roundedCorners raised">Spacial</a>
+                      <button class="button colour roundedCorners raised" onclick="displaySpatial()">Spatcial</button>
                       <br>
-                      <a class="button colour roundedCorners raised">Time</a>
+                      <button class="button colour roundedCorners raised" onclick="displayQuality()">Quality</button>
                   </div>
                 </div>
+
                 <div class="right">
                   <h2 class="right colour boldText">VIDEO OPTIONS</h2>
                   <br>
-                  <div id="video" class="section lowered roundedCorners" style="height:300px;">
-                      <form class="">
-                          <label class="">Option 1
-                              <input type="radio" name="radio" value="1">
-                              <span class=""></span>
-                          </label>
-                          <br>
-                          <label class="">Option 2
-                              <input type="radio" name="radio" value="2">
-                              <span class=""></span>
-                          </label>
-                          <br>
-                          <label class="">Option 3
-                              <input type="radio" name="radio" value="3">
-                              <span class=""></span>
-                          </label>
-                      </form>
+                  <div id="video" class="section lowered roundedCorners" style="min-height:300px;">
+                    {% for metric in config['Encoder'][6]['scalability'] %}
+                      {% if metric['name'] == 'depth' %}
+                        <div id="depth_options" style="display:none">
+                        {% for type in metric['types'] %}
+                            <label class="">{{ type.name }}<input type="radio" name="radio" value="{{ type.name }}"></label>
+                            <br>
+                        {% endfor %}
+                      </div>
+                      {% endif %}
+                      {% if metric['name'] == 'spatial(resolutions)' %}
+                      <div id="spatial_options" style="display:none">
+                        {% for type in metric['types'] %}
+                            <label class="">{{ type.name }}<input type="radio" name="radio" value="{{ type.name }}"></label>
+                            <br>
+                        {% endfor %}
+                      </div>
+                      {% endif %}
+                      {% if metric['name'] == 'temporals(frame rate)' %}
+                      <div id="temporal_options" style="display:none">
+                        {% for type in metric['types'] %}
+                            <label class="">{{ type.name }}<input type="radio" name="radio" value="{{ type.name }}"></label>
+                            <br>
+                        {% endfor %}
+                      </div>
+                      {% endif %}
+                      {% if metric['name'] == 'quality' %}
+                      <div id="quality_options" style="display:none">
+                        {% for type in metric['types'] %}
+                            <label class="">{{ type.name }}<input type="radio" name="radio" value="{{ type.name }}"></label>
+                            <br>
+                        {% endfor %}
+                      </div>
+                      {% endif %}
+                    {% endfor %}
                   </div>
                 </div>
             </div>
             <br>
-            <!-- THIS SECTION TO BE ADDED TO A BASE OR AS A COMPONENT !-->
-            <!-- NEXT PAGE BUTTON -->
+
             <div class="splitWidthContainer">
               <div class="left">
                 <a href="{{ url_for('layer_options') }}" class="button colour raised roundedCorners backButton"><i class="fa-solid fa-caret-left"></i> Cancel</a>
@@ -55,4 +82,43 @@
                 <a href="{{ url_for('layer_options') }}" class="button colour raised roundedCorners nextButton">Save</a>
               </div>
             </div>
+
+            <script>
+              const urlParams = new URLSearchParams(window.location.search);
+              const pagenumber = urlParams.get('number');
+              if (pagenumber != null) {
+                document.getElementById("layerconfignumber").innerHTML = "LAYER " + pagenumber + " CONFIG";
+              }
+
+              function displayTemporal() {
+                document.getElementById('spatial_options').style.display = 'none';
+                document.getElementById('depth_options').style.display = 'none';
+                document.getElementById('temporal_options').style.display = 'inline';
+                document.getElementById('quality_options').style.display = 'none';
+              }
+
+              function displaySpatial() {
+                document.getElementById('spatial_options').style.display = 'inline';
+                document.getElementById('depth_options').style.display = 'none';
+                document.getElementById('temporal_options').style.display = 'none';
+                document.getElementById('quality_options').style.display = 'none';
+              }
+
+              function displayDepth() {
+                document.getElementById('spatial_options').style.display = 'none';
+                document.getElementById('depth_options').style.display = 'inline';
+                document.getElementById('temporal_options').style.display = 'none';
+                document.getElementById('quality_options').style.display = 'none';
+              }
+
+              function displayQuality() {
+                document.getElementById('spatial_options').style.display = 'none';
+                document.getElementById('depth_options').style.display = 'none';
+                document.getElementById('temporal_options').style.display = 'none';
+                document.getElementById('quality_options').style.display = 'inline';
+              }
+
+
+
+            </script>
 {% endblock %}

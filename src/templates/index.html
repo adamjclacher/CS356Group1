@@ -1,8 +1,19 @@
+<!--
+# 1KLIK Project - User Interface
+# CS356 Group Project - Group One
+# Abby Boyle, Adam Clacher, Aidan Purdie, James Brown, and Jamie Connelly
+
+# index.html
+# The index/landing page
+-->
+
 {% extends "base.html" %}
 
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
+
+            <p style="display:none">{{ refresh_config_api_response('active_configurations') }}</p>
 
 
             <!-- This section requires:

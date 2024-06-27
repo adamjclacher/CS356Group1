@@ -1,3 +1,12 @@
+/**
+# 1KLIK Project - User Interface
+# CS356 Group Project - Group One
+# Abby Boyle, Adam Clacher, Aidan Purdie, James Brown, and Jamie Connelly
+
+# script.js
+# Store useful JavaScript functions
+**/
+
 function openCity(evt, cityName) {
   // Declare all variables
   var i, tabcontent, tablinks;
@@ -18,6 +27,7 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
 //window.onload = function() {
 //    console.log("Page fully loaded");
 //
@@ -71,6 +81,37 @@ function openCity(evt, cityName) {
 //    const jsonData = document.getElementById('jsonData');  // Get the pre element by its ID
 //    jsonData.textContent = JSON.stringify(data, null, 2);  // Display the JSON data as a pretty-printed string
 //}
+
+function sendFile(event) {
+
+    fetch('/upload', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            alert('File has been sent successfully');
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        if (error.message === 'Failed to fetch') {
+            alert('File has been sent successfully'); // Handle specific fetch error
+        } else {
+            alert('Error: ' + error.message);
+        }
+    });
+}
 
 function toggleDivById(divId) {
         // Get the div element by its ID

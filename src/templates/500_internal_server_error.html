@@ -1,0 +1,34 @@
+<!--
+# 1KLIK Project - User Interface
+# CS356 Group Project - Group One
+# Abby Boyle, Adam Clacher, Aidan Purdie, James Brown, and Jamie Connelly
+
+# 500_internal_server_error.html
+# Displayed if an error occurs
+-->
+
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+            <div class="section raised centreContent mainContent" style="text-align:center">
+              <br><br>
+              <h1 class="colour boldText colour">INTERNAL SERVER ERROR</h1>
+              <br><br>
+                <div class="section" style="width:1500px;display:inline-block">
+                  <p>Unfortunately, an error has occurred.</p>
+                    <br>
+                  <p>Please use the button below to return home and try again. If you need additional assistance, please contact an administrator.</p>
+                    <br>
+                    <p>If you are a site administrator, please check the site logs for more details.</p>
+                </div>
+            </div>
+            <br>
+            <div class="splitWidthContainer">
+              <div class="right" style="text-align:right">
+                <a href="{{ url_for('root') }}" class="button colour raised roundedCorners nextButton">Return Home <i class="fa-solid fa-caret-right"></i></a>
+              </div>
+            </div>
+{% endblock %}
