@@ -23,7 +23,7 @@ FLASK_RELOADER = False                                                 # Use Fla
 # CONFIG API SETTINGS
 CONFIG_API_URL = '127.0.0.1'                                           # The URL for the CONFIG API SERVER
 CONFIG_API_PORT = '8080'                                               # The port for the CONFIG API SERVER
-CONFIG_API_MOCK = True                                                # Do we want to mock Config API responses?
+CONFIG_API_MOCK = False                                                # Do we want to mock Config API responses?
 CONFIG_API_MOCK_FILE = 'resources/InputConfigJSONTemplate.json'        # If ^ yes, where is the JSON?
 
 # EXPERIMENT API SETTINGS
