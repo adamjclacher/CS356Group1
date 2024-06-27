@@ -1,3 +1,12 @@
+/**
+# 1KLIK Project - User Interface
+# CS356 Group Project - Group One
+# Abby Boyle, Adam Clacher, Aidan Purdie, James Brown, and Jamie Connelly
+
+# script.js
+# Store useful JavaScript functions
+**/
+
 function openCity(evt, cityName) {
   // Declare all variables
   var i, tabcontent, tablinks;

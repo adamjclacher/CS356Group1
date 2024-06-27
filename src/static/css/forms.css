@@ -1,3 +1,12 @@
+/**
+# 1KLIK Project - User Interface
+# CS356 Group Project - Group One
+# Abby Boyle, Adam Clacher, Aidan Purdie, James Brown, and Jamie Connelly
+
+# forms.css
+# Store stylesheets for forms
+**/
+
 .outerInputField{
   box-shadow: inset -3px -3px 7px #ffffffb0,
   inset 3px 3px 5px rgba(94, 104, 121, 0.692);

@@ -1,3 +1,10 @@
+# 1KLIK Project - User Interface
+# CS356 Group Project - Group One
+# Abby Boyle, Adam Clacher, Aidan Purdie, James Brown, and Jamie Connelly
+
+# config_api.py
+# Responsible for managing communication with the Config team's API endpoints
+
 import json
 import requests
 
@@ -8,8 +15,6 @@ from os.path import isfile
 
 # Config API Settings
 
-CONFIG_API_URL = '127.0.0.1'
-CONFIG_API_PORT = '8080'
 CONFIG_API_ENDPOINTS = [
     'all_configurations',
     'active_configurations'
@@ -21,10 +26,14 @@ class ConfigAPI:
     mockFileLocation = None
     cachedResponse = None
 
+    configApiUrl = None
+    configApiPort = None
+
     inputReader = None
 
-    def __init__(self, mock_responses=False, mock_file_location=None):
-        print(f'[LOG] {datetime.now()} Constructing ConfigAPI...')
+    def __init__(self, config_api_url, config_api_port, mock_responses=False, mock_file_location=None):
+        self.configApiUrl = config_api_url
+        self.configApiPort = config_api_port
         self.mockResponses = mock_responses
         self.mockFileLocation = mock_file_location
 
@@ -65,7 +74,7 @@ class ConfigAPI:
 
         try:
             self.cachedResponse = json.loads(
-                requests.get(f'http://{CONFIG_API_URL}:{CONFIG_API_PORT}/{endpoint}')
+                requests.get(f'http://{self.configApiUrl}:{self.configApiPort}/{endpoint}')
                 .text)
         except requests.exceptions.RequestException as e:
             raise IOError(f'Could not send GET request to given endpoint: {e}')
