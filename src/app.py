@@ -8,16 +8,17 @@
 import json
 import os
 import random
-import string
 import requests
+import string
+import sys
 
 from config_api import ConfigAPI
 from datetime import datetime
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, abort
 
 # APPLICATION SETTINGS
 SERVER_PORT = 8081                                                     # The port for running the UI SERVER
-FLASK_DEBUG = True                                                     # Use Flask debugger mode
+FLASK_DEBUG = False                                                     # Use Flask debugger mode
 FLASK_RELOADER = False                                                 # Use Flask reloader
 
 # CONFIG API SETTINGS
@@ -53,49 +54,90 @@ def root():
 @app.route('/encoder-viewer')
 def encoder_viewer():
     page_name = 2
-    return render_template('encoding.html', pageName=page_name, config=config_api_response)
+
+    try:
+        return render_template('encoding.html', pageName=page_name, config=config_api_response)
+    except Exception as e:
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'encoder-viewer\' page: {e}')
+        abort(500)
 
 
 @app.route('/video-options')
 def video_options():
     page_name = 3
-    return render_template('video_options.html', pageName=page_name, config=config_api_response)
+
+    try:
+        return render_template('video_options.html', pageName=page_name, config=config_api_response)
+    except Exception as e:
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'video-options\' page: {e}')
+        abort(500)
 
 
 @app.route('/layer-options')
 def layer_options():
     page_name = 4
-    return render_template('layer_options.html', pageName=page_name, config=config_api_response)
+
+    try:
+        return render_template('layer_options.html', pageName=page_name, config=config_api_response)
+    except Exception as e:
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'layer-options\' page: {e}')
+        abort(500)
 
 
 @app.route('/layer-config')
 def layer_config():
     page_name = 5
-    return render_template('layer_config.html', pageName=page_name, config=config_api_response)
+
+    try:
+        return render_template('layer_config.html', pageName=page_name, config=config_api_response)
+    except Exception as e:
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'layer-config\' page: {e}')
+        abort(500)
 
 
 @app.route('/network')
 def network():
     page_name = 6
-    return render_template('network.html', pageName=page_name, config=config_api_response)
+
+    try:
+        return render_template('network.html', pageName=page_name, config=config_api_response)
+    except Exception as e:
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'network\' page: {e}')
+        abort(500)
 
 
 @app.route('/impairment-options')
 def impairment_options():
     page_name = 7
-    return render_template('impairment_options.html', pageName=page_name, config=config_api_response)
+
+    try:
+        return render_template('impairment_options.html', pageName=page_name,
+                               config=config_api_response)
+    except Exception as e:
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'impairment-options\' page: {e}')
+        abort(500)
 
 
 @app.route('/analysis-viewer')
 def analysis_viewer():
     page_name = 8
-    return render_template('analysis.html', pageName=page_name, config=config_api_response)
+
+    try:
+        return render_template('analysis.html', pageName=page_name, config=config_api_response)
+    except Exception as e:
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'analysis-viewer\' page: {e}')
+        abort(500)
 
 
 @app.route('/output')
 def output():
     page_name = 9
-    return render_template('output_page.html', pageName=page_name)
+
+    try:
+        return render_template('output_page.html', pageName=page_name)
+    except Exception as e:
+        print(f'[ERROR] {datetime.now()} An error occurred whilst trying to display the \'output\' page: {e}')
+        abort(500)
 
 
 @app.route('/upload', methods=['POST'])
@@ -116,6 +158,16 @@ def upload_file():
         return jsonify(success=False, message=f"File failed. Error: {str(e)}")
     except Exception as e:
         return jsonify(success=False, message=f"An error occurred: {str(e)}")
+
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    return render_template('500_internal_server_error.html')
+
+
+@app.errorhandler(404)
+def file_not_found(error):
+    return render_template('404_file_not_found.html')
 
 
 # ========== MISCELLANEOUS FUNCTIONS ==========
@@ -155,6 +207,17 @@ def refresh_config_api_response(endpoint):
     except (ValueError, IOError) as e:
         print(f'[ERROR] {datetime.now()} Failed to refresh Config API response cache: {e}')
 
+        # If we couldn't refresh the cache but there is no current cache, then we have
+        # no choice but to exit - there is no valid response to power this application
+        # and we cannot be certain that there is a mock available.
+        if config_api_response is None:
+            print(f'[ERROR] {datetime.now()} Application terminated due to fatal error.')
+            sys.exit()
+        # If there is a cache currently stored, we will just have to utilise this until we can
+        # next attempt to refresh the cache...
+        else:
+            print(f'[ERROR] {datetime.now()} Reverting to existing Config API cache...')
+
 
 # APPLICATION ENTRY POINT
 def main():
@@ -171,7 +234,9 @@ def main():
         # Set up our ConfigAPI handler
         config_api = ConfigAPI(CONFIG_API_URL, CONFIG_API_PORT, CONFIG_API_MOCK, CONFIG_API_MOCK_FILE)
     except Exception as e:
-        print(f'Failure initialising Config API: {e}')
+        print(f'[ERROR] {datetime.now()} Failure initialising Config API: {e}')
+        print(f'[ERROR] {datetime.now()} Application terminated due to fatal error.')
+        sys.exit()
 
     if CONFIG_API_MOCK:
         refresh_config_api_response(None)
