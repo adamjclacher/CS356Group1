@@ -91,20 +91,21 @@ def get_config():
 @app.route('/upload', methods=['POST'])
 def upload_file():
     try:
-        file_path = os.path.join(OUTPUT_FILE_DIR)
+        file_path = os.path.join(OUTPUT_FILE_DIR)  # Specify the actual JSON file name
         filename_fixer(file_path)
-        with open(file_path, 'rb') as f:
+
+        with open(file_path, 'r') as f:
             files1 = json.load(f)
-            url = 'http://127.0.0.1:8082/'  # need hand with this
+            url = 'http://127.0.0.1:8082/'  # Test endpoint URL
 
             response = requests.post(url, json=files1)
+            response.raise_for_status()
 
-        if response.status_code == 200:
-            return jsonify(message="File successfully sent"), 200
-        else:
-            return jsonify(message="File failed, status code: {response.status_code}"), 400
+        return jsonify(success=True, message="File Sent")
+    except requests.RequestException as e:
+        return jsonify(success=False, message=f"File failed. Error: {str(e)}")
     except Exception as e:
-        return jsonify(message=str(e)), 500
+        return jsonify(success=False, message=f"An error occurred: {str(e)}")
 
 
 def filename_fixer(path):  # doing this as with mock files the experiment team doesn't want duplicates

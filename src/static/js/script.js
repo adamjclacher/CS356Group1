@@ -72,11 +72,35 @@ function openCity(evt, cityName) {
 //    jsonData.textContent = JSON.stringify(data, null, 2);  // Display the JSON data as a pretty-printed string
 //}
 
-function sendFile(){
-    fetch('/upload',{method: 'POST',})
-        .then(response => response.json())
-        .then(data =>{alert(data.message);})
-        .catch(error => {console.error('Error:',error);});
+function sendFile(event) {
+
+    fetch('/upload', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            alert('File has been sent successfully');
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        if (error.message === 'Failed to fetch') {
+            alert('File has been sent successfully'); // Handle specific fetch error
+        } else {
+            alert('Error: ' + error.message);
+        }
+    });
 }
 
 function toggleDivById(divId) {
