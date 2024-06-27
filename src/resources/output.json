@@ -1,0 +1,26 @@
+{
+    "Project": {
+        "name": "my new projectmIa7vaoxWCyHbfSvTFN8AfNMEHq3KjnhIgn7vMP2ADIs5EaEK2HIzezmt8rBCJNjbL6nya",
+        "version": "1.0",
+        "created": "987987987",
+        "project_type": "000",
+        "project_owner": {
+            "user_name": "Pablo",
+            "user_email": "pablo.salva-garcia@uws.ac.uk"
+        }
+    },
+    "Encoder": [
+        {
+            "codec": "002",
+            "encoder_mode": "001",
+            "layers": 2,
+            "file_code": "002"
+        },
+        {
+            "codec": "000",
+            "encoder_mode": "001",
+            "layers": 2,
+            "file_code": "004"
+        }
+    ]
+}
